@@ -13,7 +13,7 @@ spring:
 
 # mybatis config
 mybatis:
-  type-aliases-package: com.green.todolist.model
+  type-aliases-package: com.teamd.tt.model
   mapper-locations: mapper/*.xml
 
 # swagger
