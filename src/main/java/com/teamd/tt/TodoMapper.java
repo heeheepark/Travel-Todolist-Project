@@ -1,4 +1,4 @@
-package com.green.todolist;
+package com.teamd.tt;
 
 import org.apache.ibatis.annotations.Mapper;
 

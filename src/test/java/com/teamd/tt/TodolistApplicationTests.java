@@ -1,4 +1,4 @@
-package com.green.todolist;
+package com.teamd.tt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

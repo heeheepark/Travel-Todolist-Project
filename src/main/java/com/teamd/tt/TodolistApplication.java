@@ -1,4 +1,4 @@
-package com.green.todolist;
+package com.teamd.tt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
