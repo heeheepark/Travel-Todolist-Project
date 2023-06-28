@@ -7,6 +7,6 @@ import java.util.List;
 @Mapper
 public interface TodoMapper {
     List<String> selRegion();
-    List<String> selDetailRegion();
+    List<String> selDetailRegion(int idRegion);
 
 }

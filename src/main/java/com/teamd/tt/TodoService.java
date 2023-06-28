@@ -17,4 +17,8 @@ public class TodoService {
     public List<String> selRegion() {
         return mapper.selRegion();
     }
+
+    public List<String> selDetailRegion(int idRegion) {
+        return mapper.selDetailRegion(idRegion);
+    }
 }
