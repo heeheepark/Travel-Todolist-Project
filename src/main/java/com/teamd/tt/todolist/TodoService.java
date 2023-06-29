@@ -1,10 +1,9 @@
-package com.teamd.tt;
+package com.teamd.tt.todolist;
 
-import com.teamd.tt.model.*;
+import com.teamd.tt.todolist.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,7 +18,6 @@ public class TodoService {
     public SelRegionVoAll selRegion() {
         List<SelRegionVo> dto = mapper.selRegion();
         List<SelRegionDetailVo> dto1 = mapper.selDetailRegion();
-
 
         return SelRegionVoAll.builder()
                 .region(dto)

@@ -1,4 +1,4 @@
-package com.teamd.tt.model;
+package com.teamd.tt.todolist.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

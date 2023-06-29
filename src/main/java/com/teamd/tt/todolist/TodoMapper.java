@@ -1,7 +1,7 @@
-package com.teamd.tt;
+package com.teamd.tt.todolist;
 
-import com.teamd.tt.model.SelRegionDetailVo;
-import com.teamd.tt.model.SelRegionVo;
+import com.teamd.tt.todolist.model.SelRegionDetailVo;
+import com.teamd.tt.todolist.model.SelRegionVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

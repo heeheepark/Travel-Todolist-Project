@@ -1,12 +1,9 @@
-package com.teamd.tt;
+package com.teamd.tt.todolist;
 
-import com.teamd.tt.model.SelRegionVoAll;
+import com.teamd.tt.todolist.model.SelRegionVoAll;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class TodoController {
@@ -18,8 +15,9 @@ public class TodoController {
     }
 
     @GetMapping("/todo")
-    @Operation(summary = "지역 목록")
+    @Operation(summary = "Todolist 지역 목록")
     public SelRegionVoAll getRegion() {
         return service.selRegion();
     }
+
 }
