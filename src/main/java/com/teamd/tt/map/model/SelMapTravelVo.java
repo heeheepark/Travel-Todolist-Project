@@ -1,13 +1,13 @@
-package com.teamd.tt.todolist.model;
+package com.teamd.tt.map.model;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 
 @Getter
-@Builder
-
-public class SelMapTravelVoRegion {
+@AllArgsConstructor
+public class SelMapTravelVo {
     private String travelRegion;
     private String subTitle;
     private int subTitlefinishYn;

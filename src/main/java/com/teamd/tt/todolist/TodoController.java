@@ -14,7 +14,7 @@ public class TodoController {
         this.service = service;
     }
 
-    @GetMapping("/todo")
+    @GetMapping("/api/todo")
     @Operation(summary = "Todolist 지역 목록")
     public SelRegionVoAll getRegion() {
         return service.selRegion();
