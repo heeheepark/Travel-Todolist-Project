@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teamd.tt.todolist.MapMapper">
+    <select id="selAllinfo">
+        SELECT r.region, rd.region_detail, st.sub_title,st.finish_yn, cl.check_list, cl.finish_yn, t.start_date
+        FROM travel t
+        INNER JOIN sub_title st
+        ON t.id_title = st.id_title
+        INNER JOIN check_list cl
+        ON st.id_sub = cl.id_sub
+        INNER JOIN region_detail rd
+        ON t.id_region_detail = rd.id_region_detail
+        INNER JOIN region r
+        ON rd.id_region = r.id_region
+        ORDER BY start_date desc
+
+    </select>
+
+</mapper>
