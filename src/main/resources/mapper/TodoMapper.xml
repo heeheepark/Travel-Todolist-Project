@@ -3,15 +3,14 @@
 
 <mapper namespace="com.teamd.tt.TodoMapper">
 
-    <select id="selRegion" resultType="String">
-        SELECT region
+    <select id="selRegion" resultType="SelRegionVo">
+        SELECT id_region idRegion, region
         from region
     </select>
     
-    <select id="selDetailRegion" resultType="String">
-        SELECT region_detail
+    <select id="selDetailRegion" resultType="SelRegionDetailVo">
+        SELECT id_region_detail idRegionDetail, id_region idRegion, region_detail regionDetail
         FROM region_detail
-        WHERE id_region = #{id_region}
     </select>
 
 </mapper>

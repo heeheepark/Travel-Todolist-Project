@@ -1,9 +1,10 @@
 package com.teamd.tt;
 
-import com.teamd.tt.model.SelRegion;
+import com.teamd.tt.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,16 +16,14 @@ public class TodoService {
         this.mapper = mapper;
     }
 
-    public List<String> selRegion(SelRegion idregion) {
-        if(idregion.getIdRegion()) {
-            return mapper.selRegion();
-        } else if (idregion.getIdRegion() > 0) {
-            return mapper.selDetailRegion(idregion.getIdRegion());
-        }
-        return null;
-    }
+    public SelRegionVoAll selRegion() {
+        List<SelRegionVo> dto = mapper.selRegion();
+        List<SelRegionDetailVo> dto1 = mapper.selDetailRegion();
 
-    public List<String> selDetailRegion(int idRegion) {
-        return mapper.selDetailRegion(idRegion);
+
+        return SelRegionVoAll.builder()
+                .region(dto)
+                .regionDetail(dto1)
+                .build();
     }
 }
