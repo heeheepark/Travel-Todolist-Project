@@ -1,6 +1,6 @@
 package com.teamd.tt.map;
 
-import com.teamd.tt.map.model.SelMapTravelVo;
+import com.teamd.tt.map.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,17 @@ public class MapService {
         this.mapper = mapper;
     }
 
-    public List<SelMapTravelVo> selAllinfo() {
-        return mapper.selAllinfo();
+    public List<SelInfoVo> selAllInfo() {
+        return mapper.selAllInfo();
     }
+
+    public List<SelInfoVo> selPickInfo(SelPickInfoDto dto) {
+        return mapper.selPickInfo(dto);
+    }
+
+    public List<SelInfoVo> selPickDetailInfo(SelPickDetailInfoDto dto) {
+        return mapper.selPickDetailInfo(dto);
+    }
+
+
 }

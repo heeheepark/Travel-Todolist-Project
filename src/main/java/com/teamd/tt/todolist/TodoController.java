@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/todo")
 public class TodoController {
     private final TodoService service;
 
@@ -14,10 +15,9 @@ public class TodoController {
         this.service = service;
     }
 
-    @GetMapping("/api/todo")
+    @GetMapping
     @Operation(summary = "Todolist 지역 목록")
     public SelRegionVoAll getRegion() {
         return service.selRegion();
     }
-
 }

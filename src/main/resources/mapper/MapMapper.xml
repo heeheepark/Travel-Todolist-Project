@@ -2,19 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.teamd.tt.map.MapMapper">
-    <select id="selAllinfo">
-        SELECT CONCAT(r.region,' ', rd.region_detail) AS travelRegion, st.sub_title,st.finish_yn, cl.check_list, cl.finish_yn, t.start_date
-        FROM travel t
-        INNER JOIN sub_title st
-        ON t.id_title = st.id_title
-        INNER JOIN check_list cl
-        ON st.id_sub = cl.id_sub
-        INNER JOIN region_detail rd
-        ON t.id_region_detail = rd.id_region_detail
-        INNER JOIN region r
-        ON rd.id_region = r.id_region
-        ORDER BY start_date DESC;
 
+    <select id="selAllInfo">
+        SELECT id_title idTitle, title
+        FROM travel
+        ORDER BY start_date DESC;
+    </select>
+
+    <selct
+
+
+    <select id="selPickInfo">
+        SELECT id_title idTitle, title
+        FROM travel
+        WHERE id_region = #{idRegion}
+        ORDER BY start_date DESC;
+    </select>
+
+    <select id="selPickDetailInfo">
+        SELECT id_title idTitle, title
+        FROM travel
+        WHERE id_region = #{idRegion}
+        AND id_region_detail = #{idRegionDetail}
+        ORDER BY start_date DESC;
     </select>
 
 </mapper>
