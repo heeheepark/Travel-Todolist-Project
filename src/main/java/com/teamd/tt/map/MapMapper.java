@@ -1,15 +1,15 @@
 package com.teamd.tt.map;
 
-import com.teamd.tt.map.model.SelPickDetailInfoDto;
-import com.teamd.tt.map.model.SelPickInfoDto;
-import com.teamd.tt.map.model.SelInfoVo;
+import com.teamd.tt.map.model.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
 public interface MapMapper {
-    List<SelInfoVo> selAllInfo();
-    List<SelInfoVo> selPickInfo(SelPickInfoDto dto);
-    List<SelInfoVo> selPickDetailInfo(SelPickDetailInfoDto dto);
+    List<SelInfoVo> selAllTitle();
+    List<SelAllSubVo> selSub(SelAllSubDto dto);
+    List<SelAllCheckVo> selCheck(SelAllCheckDto dto);
+    List<SelInfoVo> selRegionTitle(SelRegionTitleDto dto);
+    List<SelInfoVo> selRegionDetailTitle(SelRegionDetailTitleDto dto);
 }

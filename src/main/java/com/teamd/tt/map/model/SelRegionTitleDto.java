@@ -4,6 +4,6 @@ import lombok.Data;
 
 
 @Data
-public class SelPickInfoDto {
+public class SelRegionTitleDto {
     private int idRegion;
 }

@@ -15,17 +15,23 @@ public class MapService {
         this.mapper = mapper;
     }
 
-    public List<SelInfoVo> selAllInfo() {
-        return mapper.selAllInfo();
+    public List<SelInfoVo> selAllTitle() {
+        return mapper.selAllTitle();
     }
 
-    public List<SelInfoVo> selPickInfo(SelPickInfoDto dto) {
-        return mapper.selPickInfo(dto);
+    public List<SelAllSubVo> selSub(SelAllSubDto dto) {
+        return mapper.selSub(dto);
     }
 
-    public List<SelInfoVo> selPickDetailInfo(SelPickDetailInfoDto dto) {
-        return mapper.selPickDetailInfo(dto);
+    public List<SelAllCheckVo> selCheck(SelAllCheckDto dto) {
+        return mapper.selCheck(dto);
     }
 
+    public List<SelInfoVo> selRegionTitle(SelRegionTitleDto dto) {
+        return mapper.selRegionTitle(dto);
+    }
 
+    public List<SelInfoVo> selRegionDetailTitle(SelRegionDetailTitleDto dto) {
+        return mapper.selRegionDetailTitle(dto);
+    }
 }
