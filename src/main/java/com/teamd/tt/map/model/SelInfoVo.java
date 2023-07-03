@@ -6,6 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class SelInfoVo {
-    private String idTitle;
+    private int idTitle;
     private String title;
 }

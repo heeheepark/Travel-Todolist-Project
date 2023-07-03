@@ -9,8 +9,6 @@
         ORDER BY start_date DESC;
     </select>
 
-    <selct
-
 
     <select id="selPickInfo">
         SELECT id_title idTitle, title
