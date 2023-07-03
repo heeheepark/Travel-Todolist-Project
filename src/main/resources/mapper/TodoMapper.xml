@@ -13,4 +13,39 @@
         FROM region_detail
     </select>
 
+    <insert id="insAddTitle">
+        INSERT INTO travel
+        (id_region, id_region_detail, start_date, end_date, cal_color, title)
+        VALUES
+        ( #{idRegion}, #{idRegionDetail}, #{startDate}, #{endDate}, #{calColor},#{title})
+    </insert>
+        
+    <insert id="insAddSubTitle">
+        INSERT INTO sub_title
+        (sub_title)
+        VALUES
+        (#{subTitle})
+
+    </insert>
+
+    <insert id="insAddCheckList">
+        INSERT INTO check_list
+        (check_list)
+        VALUES
+        (#{check_list})
+    </insert>
+
+    <select id="selidRegion">
+        SELECT region
+        from region
+        where id_region = #{idRegion}
+    </select>
+
+    <select id="selidRegionDetail">
+        SELECT region_detail
+        from region_detail
+        where id_region_detail = #{idRegionDetail}
+    </select>
+
+
 </mapper>

@@ -1,7 +1,6 @@
 package com.teamd.tt.todolist;
 
-import com.teamd.tt.todolist.model.SelRegionDetailVo;
-import com.teamd.tt.todolist.model.SelRegionVo;
+import com.teamd.tt.todolist.model.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -10,4 +9,10 @@ import java.util.List;
 public interface TodoMapper {
     List<SelRegionVo> selRegion();
     List<SelRegionDetailVo> selDetailRegion();
+    int insAddTitle(InsTitleEntity entity );
+    String selidRegion(int idRegion);
+    String selidRegionDetail(int idRegionDetail);
+    int insAddSubTitle(InsSubTitleDto dto);
+    int insAddCheckList(IntCheckListDto dto);
+
 }
