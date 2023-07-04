@@ -2,6 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.teamd.tt.calender.CalenderMapper">
+    <select id="selAllCalSchedule">
+        SELECT id_title idTitle, title, start_date startDate, end_date endDate
+        FROM travel
+        WHERE start_date BETWEEN DATE_SUB(#{date}, INTERVAL 1 MONTH) AND DATE_ADD(LAST_DAY(#{date}), INTERVAL 1 MONTH)
+    </select>
+
+
+    <select id="checkDetail">
+        SELECT check_list checkList finish_yn
+        FROM check_list
+        where id_sub = #{idSub}
+    </select>
+
+
     <select id="selAllTitle">
         SELECT id_title idTitle, title, start_date startDate, end_date endDate
         FROM travel
@@ -17,4 +31,6 @@
         FROM check_list
         WHERE id_sub = #{idSub}
     </select>
+
+
 </mapper>
