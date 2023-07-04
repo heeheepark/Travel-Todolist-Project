@@ -3,7 +3,6 @@ package com.teamd.tt.todolist;
 import com.teamd.tt.todolist.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class TodoService {
                 .build();
     }
 
-    public int insAddTitle( InsTitleDto dto) {
+    public int insAddTitle(InsTitleDto dto) {
         InsTitleEntity entity = new InsTitleEntity();
         String idregion =mapper.selidRegion(dto.getIdRegion());
         String idregiondetail =mapper.selidRegionDetail(dto.getIdRegionDetail());
@@ -43,8 +42,22 @@ public class TodoService {
         return mapper.insAddSubTitle(dto);
     }
 
-    public int insAddCheckList( IntCheckListDto dto) {
+    public int insAddCheckList( InsCheckListDto dto) {
         return mapper.insAddCheckList(dto);
+    }
+
+    public int updTitle(updTitleDto dto) {
+        updTitleEntity entity = new updTitleEntity();
+        entity.set
+        String idregion =mapper.selidRegion(dto.getIdRegion());
+        String idregiondetail =mapper.selidRegionDetail(dto.getIdRegionDetail());
+        entity.setTitle(idregion+" "+idregiondetail);
+        entity.setIdRegion(dto.getIdRegion());
+        entity.setIdRegionDetail(dto.getIdRegionDetail());
+        entity.setStartDate(dto.getStartDate());
+        entity.setEndDate(dto.getEndDate());
+        entity.setCalColor(dto.getCalColor());
+        return mapper.updTitle(entity);
     }
 
 }

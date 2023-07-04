@@ -18,22 +18,36 @@
         (id_region, id_region_detail, start_date, end_date, cal_color, title)
         VALUES
         ( #{idRegion}, #{idRegionDetail}, #{startDate}, #{endDate}, #{calColor},#{title})
+
     </insert>
         
     <insert id="insAddSubTitle">
         INSERT INTO sub_title
-        (sub_title)
+        (id_title, sub_title)
         VALUES
-        (#{subTitle})
+        (#{idTitle}, #{subTitle})
 
     </insert>
 
     <insert id="insAddCheckList">
         INSERT INTO check_list
-        (check_list)
+        (id_sub, check_list)
         VALUES
-        (#{check_list})
+        (#{idSub}, #{checkList})
     </insert>
+
+    <update id="updTitle">
+        UPDATE travel
+        set id_region = #{idRegion},
+            id_region_detail = #{idRegionDetail},
+            start_date = #{startDate},
+            end_date = #{endDate},
+            cal_color = #{calColor},
+            title = #{title},
+        WHERE id_title = #{idTitle}
+    </update>
+
+
 
     <select id="selidRegion">
         SELECT region

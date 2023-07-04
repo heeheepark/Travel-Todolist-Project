@@ -2,7 +2,6 @@ package com.teamd.tt.todolist;
 
 import com.teamd.tt.todolist.model.*;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springdoc.core.utils.SpringDocUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,20 +22,52 @@ public class TodoController {
     }
 
     @PostMapping("")
-    @Operation(summary = "여행Title 추가")
+    @Operation(summary = "여행지 추가",
+            description = "<h3>idRegion : 시,도 고유값\n" +
+                    "<h3>idRegionDetail : 군,구 고유값\n" +
+                    "<h3>startDate : 시작 날짜 0000-00-00\n" +
+                    "<h3>endDate : 마지막 날짜 0000-00-00\n" +
+                    "<h3>calColor : 색깔코드\n ")
     public int postAddTitle(@RequestBody InsTitleDto dto) {
         return service.insAddTitle(dto);
     }
 
     @PostMapping("/sub")
-    @Operation(summary = "여행subTitle 추가")
+    @Operation(summary = "여행일정 추가",
+            description = "<h3>idTitle  : 여행지 pk값\n" +
+                    "<h3>subTitle : 여행일정 내용\n")
     public int postAddSubTitle(@RequestBody InsSubTitleDto dto) {
-        return service.insAddSubTitle(dto);
+        service.insAddSubTitle(dto);
+        return dto.getIdTitle();
     }
 
     @PostMapping("/sub/checklist")
-    @Operation(summary = "checkList 추가")
-    public int postAddcheckList(@RequestBody IntCheckListDto dto) {
-        return service.insAddCheckList(dto);
+    @Operation(summary = "checkList 추가",
+            description = "<h3>idSub  : 여행일정 pk값\n" +
+                    "<h3>checkList : 준비리스트 내용\n")
+    public int postAddcheckList(@RequestBody InsCheckListDto dto) {
+        service.insAddCheckList(dto);
+        return dto.getIdSub();
     }
+
+    @PutMapping("/{idTitle}")
+    @Operation(summary = "여행지 수정",
+            description = "<h3>idRegion : 시,도 고유값\n" +
+                    "<h3>idRegionDetail : 군,구 고유값\n" +
+                    "<h3>startDate : 시작 날짜 0000-00-00\n" +
+                    "<h3>endDate : 마지막 날짜 0000-00-00\n" +
+                    "<h3>calColor : 색깔코드\n" +
+                    "<h3>idTitle : 여행지pk 값\n")
+    public int putTitle(@PathVariable int idTitle, @RequestBody updTitleDto dto) {
+
+        return service.updTitle(dto);
+    }
+
+
+
+
+
+
+
+
 }

@@ -13,6 +13,7 @@ public interface TodoMapper {
     String selidRegion(int idRegion);
     String selidRegionDetail(int idRegionDetail);
     int insAddSubTitle(InsSubTitleDto dto);
-    int insAddCheckList(IntCheckListDto dto);
+    int insAddCheckList(InsCheckListDto dto);
+    int updTitle(updTitleEntity entity);
 
 }

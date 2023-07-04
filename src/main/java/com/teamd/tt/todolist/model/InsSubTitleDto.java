@@ -4,5 +4,6 @@ import lombok.Data;
 
 @Data
 public class InsSubTitleDto {
+    private int idTitle;
     private String subTitle;
 }
