@@ -30,7 +30,7 @@ public class MapController {
             description = "<h3>idTitle : 여행리스트 키값\n" +
                     "<h3>subTitle : 일정 내용\n" +
                     "<h3>finishYn : 끝냄 여부")
-    public List<SelAllSubVo> getMapSubList(@RequestParam int idTitle) {
+    public List<SelAllSubVo> getMapSubList(@PathVariable int idTitle) {
         SelAllSubDto dto = new SelAllSubDto();
         dto.setIdTitle(idTitle);
         return service.selSub(dto);
@@ -40,7 +40,7 @@ public class MapController {
     @Operation(summary = "지도 전체 체크리스트\n"+
             "<h3>checkList : 준비리스트 내용\n" +
             "<h3>finishYn : 끝냄 여부")
-    public List<SelAllCheckVo> selAllCheck(@RequestParam int idSub) {
+    public List<SelAllCheckVo> selAllCheck(@PathVariable int idSub) {
         SelAllCheckDto dto = new SelAllCheckDto();
         dto.setIdSub(idSub);
         return service.selCheck(dto);

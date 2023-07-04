@@ -27,9 +27,9 @@ public class TodoService {
 
     public int insAddTitle(InsTitleDto dto) {
         InsTitleEntity entity = new InsTitleEntity();
-        String idregion =mapper.selIdRegion(dto.getIdRegion());
-        String idregiondetail =mapper.selIdRegionDetail(dto.getIdRegionDetail());
-        entity.setTitle(idregion+" "+idregiondetail); // 남규진 콜
+        String idregion = mapper.selIdRegion(dto.getIdRegion());
+        String idregiondetail = mapper.selIdRegionDetail(dto.getIdRegionDetail());
+        entity.setTitle(idregion + " " + idregiondetail); // 남규진 콜
         entity.setIdRegion(dto.getIdRegion());
         entity.setIdRegionDetail(dto.getIdRegionDetail());
         entity.setStartDate(dto.getStartDate());
@@ -38,18 +38,18 @@ public class TodoService {
         return mapper.insAddTitle(entity);
     }
 
-    public int insAddSubTitle( InsSubTitleDto dto) {
+    public int insAddSubTitle(InsSubTitleDto dto) {
         return mapper.insAddSubTitle(dto);
     }
 
-    public int insAddCheckList( InsCheckListDto dto) {
+    public int insAddCheckList(InsCheckListDto dto) {
         return mapper.insAddCheckList(dto);
     }
 
     public int updTitle(updTitleEntity entity) {
-        String idRegion =mapper.selIdRegion(entity.getIdRegion());
-        String idRegionDetail =mapper.selIdRegionDetail(entity.getIdRegionDetail());
-        entity.setTitle(idRegion+" "+idRegionDetail);
+        String idRegion = mapper.selIdRegion(entity.getIdRegion());
+        String idRegionDetail = mapper.selIdRegionDetail(entity.getIdRegionDetail());
+        entity.setTitle(idRegion + " " + idRegionDetail);
         return mapper.updTitle(entity);
     }
 }

@@ -7,4 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class SelInfoDto {
     private int idTitle;
+    private String title;
+    private String startDate;
+    private String endDate;
 }

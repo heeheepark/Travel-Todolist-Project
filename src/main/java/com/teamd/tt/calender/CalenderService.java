@@ -1,7 +1,9 @@
 package com.teamd.tt.calender;
 
-import com.teamd.tt.calender.model.SelAllCalScheduleDto;
-import com.teamd.tt.calender.model.SelAllCalVo;
+import com.teamd.tt.calender.model.*;
+import com.teamd.tt.map.model.*;
+import com.teamd.tt.map.model.SelAllCheckVo;
+import com.teamd.tt.map.model.SelAllSubVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,4 +23,13 @@ public class CalenderService {
         return mapper.selAllCalSchedule(date);
     }
 
+    public SelInfoDto selTitle(SelTitleDto dto) {
+        return mapper.selTitle(dto);
+    }
+    public List<SelAllSubVo> selSub(SelSubDto dto){
+        return mapper.selSub(dto);
+    }
+    public List<SelAllCheckVo> selCheck(SelCheckDto dto){
+        return mapper.selCheck(dto);
+    }
 }

@@ -8,29 +8,26 @@
         WHERE start_date BETWEEN DATE_SUB(#{date}, INTERVAL 1 MONTH) AND DATE_ADD(LAST_DAY(#{date}), INTERVAL 1 MONTH)
     </select>
 
-
-    <select id="checkDetail">
-        SELECT check_list checkList finish_yn
-        FROM check_list
-        where id_sub = #{idSub}
-    </select>
-
-
-    <select id="selAllTitle">
+    <select id="selTitle">
         SELECT id_title idTitle, title, start_date startDate, end_date endDate
         FROM travel
-        ORDER BY start_date;
+        WHERE id_title = #{idTitle}
+        ORDER BY start_date
     </select>
     <select id="selSub">
-        SELECT id_sub idSub, sub_title subTitle, finish_yn finishYn
-        FROM sub_title
-        WHERE id_title = #{idTitle}
+        SELECT a.id_sub idSub, a.sub_title subTitle, a.finish_yn finishYn
+        FROM sub_title a
+        INNER JOIN travel b
+        ON a.id_title = b.id_title
+        WHERE b.id_title = #{idTitle}
     </select>
     <select id="selCheck">
-        SELECT id_check idCheck, check_list checkList, finish_Yn finishYn
-        FROM check_list
-        WHERE id_sub = #{idSub}
+        SELECT a.id_check idCheck, a.check_list checkList, a.finish_Yn finishYn
+        FROM check_list a
+        INNER JOIN sub_title b
+        ON a.id_sub = b.id_sub
+        INNER JOIN travel c
+        ON b.id_title = c.id_title
+        WHERE b.id_sub = #{idSub}
     </select>
-
-
 </mapper>
