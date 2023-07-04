@@ -10,10 +10,9 @@ public interface TodoMapper {
     List<SelRegionVo> selRegion();
     List<SelRegionDetailVo> selDetailRegion();
     int insAddTitle(InsTitleEntity entity );
-    String selidRegion(int idRegion);
-    String selidRegionDetail(int idRegionDetail);
+    String selIdRegion(int idRegion);
+    String selIdRegionDetail(int idRegionDetail);
     int insAddSubTitle(InsSubTitleDto dto);
     int insAddCheckList(InsCheckListDto dto);
     int updTitle(updTitleEntity entity);
-
 }

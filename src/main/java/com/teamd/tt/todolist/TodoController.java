@@ -59,8 +59,14 @@ public class TodoController {
                     "<h3>calColor : 색깔코드\n" +
                     "<h3>idTitle : 여행지pk 값\n")
     public int putTitle(@PathVariable int idTitle, @RequestBody updTitleDto dto) {
-
-        return service.updTitle(dto);
+        updTitleEntity entity = new updTitleEntity();
+        entity.setIdTitle(idTitle);
+        entity.setIdRegion(dto.getIdRegion());
+        entity.setIdRegionDetail(dto.getIdRegionDetail());
+        entity.setStartDate(dto.getStartDate());
+        entity.setEndDate(dto.getEndDate());
+        entity.setCalColor(dto.getCalColor());
+        return service.updTitle(entity);
     }
 
 

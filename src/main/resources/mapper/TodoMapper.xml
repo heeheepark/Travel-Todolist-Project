@@ -38,24 +38,24 @@
 
     <update id="updTitle">
         UPDATE travel
-        set id_region = #{idRegion},
+        SET id_region = #{idRegion},
             id_region_detail = #{idRegionDetail},
             start_date = #{startDate},
             end_date = #{endDate},
             cal_color = #{calColor},
-            title = #{title},
+            title = #{title}
         WHERE id_title = #{idTitle}
     </update>
 
 
 
-    <select id="selidRegion">
+    <select id="selIdRegion">
         SELECT region
         from region
         where id_region = #{idRegion}
     </select>
 
-    <select id="selidRegionDetail">
+    <select id="selIdRegionDetail">
         SELECT region_detail
         from region_detail
         where id_region_detail = #{idRegionDetail}
