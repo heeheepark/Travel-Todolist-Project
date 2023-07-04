@@ -26,10 +26,10 @@ public class CalenderService {
     public SelInfoDto selTitle(SelTitleDto dto) {
         return mapper.selTitle(dto);
     }
-    public List<SelAllSubVo> selSub(SelSubDto dto){
+    public List<SelAllCalSubVo> selSub(SelSubDto dto){
         return mapper.selSub(dto);
     }
-    public List<SelAllCheckVo> selCheck(SelCheckDto dto){
+    public List<SelAllCalCheckVo> selCheck(SelCheckDto dto){
         return mapper.selCheck(dto);
     }
 }

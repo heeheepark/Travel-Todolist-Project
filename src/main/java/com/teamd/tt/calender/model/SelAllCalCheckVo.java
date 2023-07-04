@@ -5,8 +5,8 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class SelAllSubVo {
-    private int idSub;
-    private String subTitle;
+public class SelAllCalCheckVo {
+    private int idCheck;
+    private String checkList;
     private boolean finishYn;
 }

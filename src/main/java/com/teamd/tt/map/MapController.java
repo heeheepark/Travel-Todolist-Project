@@ -25,7 +25,7 @@ public class MapController {
         return service.selAllTitle();
     }
 
-    @GetMapping("/sub")
+    @GetMapping("/sub/{idTitle}")
     @Operation(summary = "지도 전체 일정리스트",
             description = "<h3>idTitle : 여행리스트 키값\n" +
                     "<h3>subTitle : 일정 내용\n" +
@@ -36,7 +36,7 @@ public class MapController {
         return service.selSub(dto);
     }
 
-    @GetMapping("/check")
+    @GetMapping("/check/{idSub}")
     @Operation(summary = "지도 전체 체크리스트\n"+
             "<h3>checkList : 준비리스트 내용\n" +
             "<h3>finishYn : 끝냄 여부")

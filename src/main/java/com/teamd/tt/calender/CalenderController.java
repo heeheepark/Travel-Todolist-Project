@@ -21,8 +21,8 @@ public class CalenderController {
 
     @GetMapping
     @Operation(summary = "캘린더 전체 일정 데이터",
-    description = "<h3>year : 년도 입력(시작날짜 연도로 구분중)\n" +
-    "<h3>month : 달 입력(시작날짜 달로 구분중)\n")
+            description = "<h3>year : 년도 입력(시작날짜 연도로 구분중)\n" +
+                    "<h3>month : 달 입력(시작날짜 달로 구분중)\n")
     public List<SelAllCalVo> getAllSchedule (@RequestParam int year, @RequestParam int month) {
         SelAllCalScheduleDto dto = new SelAllCalScheduleDto();
         dto.setYear(year);
@@ -41,8 +41,8 @@ public class CalenderController {
 
     @GetMapping("/{idTitle}/sub")
     @Operation(summary = "달력에서 선택한 여행의 Todo의 checklist",
-            description = "<h3>idSub : Todolist 키값\n")
-    public List<SelAllSubVo> getSub(@PathVariable int idTitle) {
+            description = "<h3>idTitle : 여행리스트 키값\n")
+    public List<SelAllCalSubVo> getSub(@PathVariable int idTitle) {
         SelSubDto dto = new SelSubDto();
         dto.setIdTitle(idTitle);
         return service.selSub(dto);
@@ -50,8 +50,8 @@ public class CalenderController {
 
     @GetMapping("/{idSub}/check")
     @Operation(summary = "달력에서 선택한 여행",
-            description = "<h3>idTitle : 여행리스트 키값\n")
-    public List<SelAllCheckVo> getCheck(@PathVariable int idSub) {
+            description = "<h3>idSub : 여행리스트 키값\n")
+    public List<SelAllCalCheckVo> getCheck(@PathVariable int idSub) {
         SelCheckDto dto = new SelCheckDto();
         dto.setIdSub(idSub);
         return service.selCheck(dto);

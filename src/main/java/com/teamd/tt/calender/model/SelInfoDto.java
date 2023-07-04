@@ -1,10 +1,10 @@
 package com.teamd.tt.calender.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 
-@Getter
-@AllArgsConstructor
+@Data
 public class SelInfoDto {
     private int idTitle;
     private String title;

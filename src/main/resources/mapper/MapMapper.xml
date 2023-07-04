@@ -7,7 +7,7 @@
         SELECT id_title idTitle, title, start_date startDate, end_date endDate
         FROM travel
         WHERE start_date > CURRENT_TIMESTAMP()
-        ORDER BY start_date;
+        ORDER BY start_date
     </select>
     <select id="selSub">
         SELECT id_sub idSub, sub_title subTitle, finish_yn finishYn
@@ -24,7 +24,7 @@
         SELECT id_title idTitle, title, start_date startDate, end_date endDate
         FROM travel
         WHERE id_region = #{idRegion}
-        ORDER BY start_date;
+        ORDER BY start_date
     </select>
 
     <select id="selRegionDetailTitle">
@@ -32,7 +32,7 @@
         FROM travel
         WHERE id_region = #{idRegion}
         AND id_region_detail = #{idRegionDetail}
-        ORDER BY start_date;
+        ORDER BY start_date
     </select>
 
 </mapper>
