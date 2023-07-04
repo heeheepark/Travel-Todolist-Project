@@ -52,4 +52,8 @@ public class TodoService {
         entity.setTitle(idRegion + " " + idRegionDetail);
         return mapper.updTitle(entity);
     }
+
+    public int updSubTitle(updSubTitleEntity entity ) {
+        return mapper.updSubTitle(entity);
+    }
 }

@@ -15,4 +15,5 @@ public interface TodoMapper {
     int insAddSubTitle(InsSubTitleDto dto);
     int insAddCheckList(InsCheckListDto dto);
     int updTitle(updTitleEntity entity);
+    int updSubTitle(updSubTitleEntity entity);
 }

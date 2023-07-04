@@ -68,12 +68,16 @@ public class TodoController {
         entity.setCalColor(dto.getCalColor());
         return service.updTitle(entity);
     }
+    @PutMapping("/sub/{idSub}")
+    @Operation(summary = "여행일정 수정")
+    public int putSubTitle(@PathVariable int idSub, @RequestBody updSubTitleDto dto) {
+        updSubTitleEntity entity = new updSubTitleEntity();
+        entity.setIdSub(idSub);
+        entity.setSubTitle(dto.getSubTitle());
+        entity.setIdTitle(dto.getIdTitle());
+        return service.updSubTitle(entity);
 
-
-
-
-
-
+    }
 
 
 }

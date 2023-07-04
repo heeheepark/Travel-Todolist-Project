@@ -47,6 +47,14 @@
         WHERE id_title = #{idTitle}
     </update>
 
+    <update id="updSubTitle">
+        UPDATE sub_title
+        SET id_title = #{idTitle},
+            sub_title = #{subTitle},
+            updated_at = CURRENT_TIMESTAMP()
+        WHERE id_sub = #{idSub}
+    </update>
+
 
 
     <select id="selIdRegion">
