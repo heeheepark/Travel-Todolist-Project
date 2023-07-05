@@ -3,6 +3,7 @@ package com.teamd.tt.map;
 import com.teamd.tt.map.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,5 +34,22 @@ public class MapService {
 
     public List<SelInfoVo> selRegionDetailTitle(SelRegionDetailTitleDto dto) {
         return mapper.selRegionDetailTitle(dto);
+    }
+
+    @Transactional
+    public SelCountAllDto selCountMapAll () {
+        List<Integer> idList = mapper.getRegionIdList();
+        List<SelCountMapVo> list = mapper.selCountMap(idList);
+
+        List<Integer> idList2 = mapper.getRegionDetailIdList();
+        List<SelCountDetailMapVo> list2 = mapper.selCountDetailMap(idList2);
+
+        int countAll = mapper.getCountAll();
+        SelCountAllDto dto = new SelCountAllDto();
+        dto.setTotalCount(countAll);
+        dto.setRegion(list);
+        dto.setRegionDetail(list2);
+
+        return dto;
     }
 }

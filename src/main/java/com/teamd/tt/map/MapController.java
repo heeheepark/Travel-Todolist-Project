@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -68,5 +69,11 @@ public class MapController {
         dto.setIdRegion(idRegion);
         dto.setIdRegionDetail(idRegionDetail);
         return service.selRegionDetailTitle(dto);
+    }
+
+    @GetMapping("/count")
+    @Operation(summary = "지도 여행 카운트")
+    public SelCountAllDto getCountMap() {
+        return service.selCountMapAll();
     }
 }

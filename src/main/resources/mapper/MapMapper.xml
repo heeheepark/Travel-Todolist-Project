@@ -35,4 +35,48 @@
         ORDER BY start_date
     </select>
 
+    <select id="getRegionIdList">
+        SELECT id_region
+        FROM region
+    </select>
+
+    <select id="selCountMap">
+        <foreach collection="list" item="item" index="index" separator="UNION">
+            SELECT id_region idRegion, region,
+            (
+            SELECT COUNT(id_title)
+            FROM travel
+            WHERE CURRENT_TIMESTAMP > end_date
+            AND id_region = #{item}
+            ) AS count
+            FROM region
+            WHERE id_region = #{item}
+        </foreach>
+    </select>
+
+    <select id="getCountAll">
+        SELECT COUNT(id_title) AS countAll
+        FROM travel
+        WHERE CURRENT_TIMESTAMP > end_date
+    </select>
+
+    <select id="getRegionDetailIdList">
+        SELECT id_region_detail
+        FROM region_detail
+    </select>
+    
+    <select id="selCountDetailMap">
+        <foreach collection="list" item="item" index="index" separator="UNION">
+            SELECT id_region_detail idRegionDetail, id_region idRegion, region_detail regionDetail,
+            (
+            SELECT COUNT(id_title)
+            FROM travel
+            WHERE CURRENT_TIMESTAMP > end_date
+            AND id_region_detail = #{item}
+            ) AS count
+            FROM region_detail
+            WHERE id_region_detail = #{item}
+        </foreach>
+    </select>
+
 </mapper>

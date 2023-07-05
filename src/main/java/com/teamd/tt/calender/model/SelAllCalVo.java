@@ -6,8 +6,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class SelAllCalVo {
+    private int idTitle;
     private String title;
     private String startDate;
     private String endDate;
-    private String travelReview;
+    private String calColor;
 }

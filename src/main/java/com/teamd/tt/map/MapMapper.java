@@ -12,4 +12,11 @@ public interface MapMapper {
     List<SelAllCheckVo> selCheck(SelAllCheckDto dto);
     List<SelInfoVo> selRegionTitle(SelRegionTitleDto dto);
     List<SelInfoVo> selRegionDetailTitle(SelRegionDetailTitleDto dto);
+
+    List<Integer> getRegionIdList();
+    int getCountAll();
+    List<SelCountMapVo> selCountMap(List<Integer> list);
+
+    List<Integer> getRegionDetailIdList();
+    List<SelCountDetailMapVo> selCountDetailMap(List<Integer> list);
 }

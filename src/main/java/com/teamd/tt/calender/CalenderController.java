@@ -1,8 +1,6 @@
 package com.teamd.tt.calender;
 
 import com.teamd.tt.calender.model.*;
-import com.teamd.tt.map.model.SelAllCheckVo;
-import com.teamd.tt.map.model.SelAllSubVo;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +29,7 @@ public class CalenderController {
     }
 
     @GetMapping("/{idTitle}")
-    @Operation(summary = "달력에서 선택한 여행의 Todo",
+    @Operation(summary = "달력에서 선택한 선택한 여행",
             description = "<h3>idTitle : 여행리스트 키값\n")
     public SelInfoDto getTitle(@PathVariable int idTitle) {
         SelTitleDto dto = new SelTitleDto();
@@ -40,7 +38,7 @@ public class CalenderController {
     }
 
     @GetMapping("/{idTitle}/sub")
-    @Operation(summary = "달력에서 선택한 여행의 Todo의 checklist",
+    @Operation(summary = "달력에서 선택한 여행의 Todo",
             description = "<h3>idTitle : 여행리스트 키값\n")
     public List<SelAllCalSubVo> getSub(@PathVariable int idTitle) {
         SelSubDto dto = new SelSubDto();
@@ -49,8 +47,8 @@ public class CalenderController {
     }
 
     @GetMapping("/{idSub}/check")
-    @Operation(summary = "달력에서 선택한 여행",
-            description = "<h3>idSub : 여행리스트 키값\n")
+    @Operation(summary = "달력에서 선택한 여행의 Todo의 checklist",
+            description = "<h3>idSub : Todo의 키값\n")
     public List<SelAllCalCheckVo> getCheck(@PathVariable int idSub) {
         SelCheckDto dto = new SelCheckDto();
         dto.setIdSub(idSub);

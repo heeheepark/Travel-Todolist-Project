@@ -10,4 +10,5 @@ public class SelInfoDto {
     private String title;
     private String startDate;
     private String endDate;
+    private String travelReview;
 }
