@@ -1,6 +1,5 @@
 package com.teamd.tt.todolist;
 
-import com.teamd.tt.todolist.model.*;
 import com.teamd.tt.todolist.model.dto.*;
 import com.teamd.tt.todolist.model.vo.SelRegionAllVo;
 import io.swagger.v3.oas.annotations.Operation;
