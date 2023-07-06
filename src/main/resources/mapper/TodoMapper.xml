@@ -13,28 +13,32 @@
         FROM region_detail
     </select>
 
-    <insert id="insAddTitle">
-        INSERT INTO travel
-        (id_region, id_region_detail, start_date, end_date, cal_color, title)
-        VALUES
-        ( #{idRegion}, #{idRegionDetail}, #{startDate}, #{endDate}, #{calColor},#{title})
 
+
+
+    <insert id="insTitle">
+        INSERT INTO travel
+        (id_region_detail, id_region, title, start_date, end_date, cal_color)
+        VALUES
+        ( #{idRegionDetail}, #{idRegion}, #{title}, #{startDate}, #{endDate}, #{calColor})
     </insert>
         
-    <insert id="insAddSubTitle">
+    <insert id="insSubTitle">
         INSERT INTO sub_title
         (id_title, sub_title)
         VALUES
-        (#{idTitle}, #{subTitle})
-
+        ((SELECT id_title FROM travel ORDER BY id_title DESC LIMIT 1), #{subTitle})
     </insert>
 
-    <insert id="insAddCheckList">
-        INSERT INTO check_list
-        (id_sub, check_list)
-        VALUES
-        (#{idSub}, #{checkList})
+    <insert id="insCheckList">
+        <foreach collection="list" item="item" index="index" separator=";">
+            INSERT INTO check_list
+            (id_sub, check_list)
+            VALUES
+            ((SELECT id_sub FROM sub_title ORDER BY id_sub DESC LIMIT 1), #{item.checkList})
+        </foreach>
     </insert>
+
 
     <update id="updTitle">
         UPDATE travel

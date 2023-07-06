@@ -1,13 +1,12 @@
-package com.teamd.tt.map.model;
+package com.teamd.tt.map.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class SelCountDetailMapVo {
-    private int idRegionDetail;
+public class SelCountMapVo {
     private int idRegion;
-    private String regionDetail;
+    private String region;
     private int count;
 }

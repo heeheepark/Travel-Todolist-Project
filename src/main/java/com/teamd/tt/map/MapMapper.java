@@ -1,6 +1,10 @@
 package com.teamd.tt.map;
 
-import com.teamd.tt.map.model.*;
+import com.teamd.tt.map.model.dto.SelAllCheckDto;
+import com.teamd.tt.map.model.dto.SelAllSubDto;
+import com.teamd.tt.map.model.dto.SelRegionDetailTitleDto;
+import com.teamd.tt.map.model.dto.SelRegionTitleDto;
+import com.teamd.tt.map.model.vo.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

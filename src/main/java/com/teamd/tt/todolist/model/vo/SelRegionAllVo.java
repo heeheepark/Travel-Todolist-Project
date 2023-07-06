@@ -1,4 +1,4 @@
-package com.teamd.tt.todolist.model;
+package com.teamd.tt.todolist.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @Builder
-public class SelRegionVoAll {
+public class SelRegionAllVo {
     private List<SelRegionVo> region;
     private List<SelRegionDetailVo> regionDetail;
 }

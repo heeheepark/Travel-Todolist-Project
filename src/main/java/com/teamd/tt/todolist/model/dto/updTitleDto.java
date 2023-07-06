@@ -1,4 +1,4 @@
-package com.teamd.tt.todolist.model;
+package com.teamd.tt.todolist.model.dto;
 
 import lombok.Data;
 

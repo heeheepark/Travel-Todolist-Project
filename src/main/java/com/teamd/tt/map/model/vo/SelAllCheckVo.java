@@ -1,4 +1,4 @@
-package com.teamd.tt.map.model;
+package com.teamd.tt.map.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

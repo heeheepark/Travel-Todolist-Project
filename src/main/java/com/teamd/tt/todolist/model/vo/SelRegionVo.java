@@ -1,12 +1,11 @@
-package com.teamd.tt.map.model;
+package com.teamd.tt.todolist.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class SelCountMapVo {
+public class SelRegionVo {
     private int idRegion;
     private String region;
-    private int count;
 }
