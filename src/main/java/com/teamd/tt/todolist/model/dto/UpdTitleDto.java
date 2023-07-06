@@ -3,7 +3,7 @@ package com.teamd.tt.todolist.model.dto;
 import lombok.Data;
 
 @Data
-public class updTitleDto {
+public class UpdTitleDto {
     private int idRegion;
     private int idRegionDetail;
     private String startDate;

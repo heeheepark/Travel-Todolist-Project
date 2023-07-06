@@ -1,10 +1,7 @@
 package com.teamd.tt.todolist;
 
 import com.teamd.tt.todolist.model.*;
-import com.teamd.tt.todolist.model.dto.InsCheckListDtoDDDD;
-import com.teamd.tt.todolist.model.dto.InsDto;
-import com.teamd.tt.todolist.model.dto.InsSubTitleDtoDDDD;
-import com.teamd.tt.todolist.model.dto.InsTitleDto;
+import com.teamd.tt.todolist.model.dto.*;
 import com.teamd.tt.todolist.model.vo.InsCheckListVo;
 import com.teamd.tt.todolist.model.vo.SelRegionAllVo;
 import com.teamd.tt.todolist.model.vo.SelRegionDetailVo;
@@ -79,6 +76,18 @@ public class TodoService {
             checkList.clear();
         }
         return 0;
+    }
+
+    public int delCheckList(DelCheckListDto dto) {
+        return mapper.delCheckList(dto);
+    }
+
+    public int delSubTitle(DelSubTitleDto dto) {
+        return mapper.delSubTitle(dto);
+    }
+
+    public int updTravel(UpdTravelDto dto) {
+        return mapper.updTravel(dto);
     }
 
 

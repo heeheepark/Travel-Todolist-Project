@@ -1,6 +1,5 @@
 package com.teamd.tt.todolist;
 
-import com.teamd.tt.todolist.model.*;
 import com.teamd.tt.todolist.model.dto.*;
 import com.teamd.tt.todolist.model.vo.SelRegionAllVo;
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,6 +33,27 @@ public class TodoController {
                     "<h3>checkList : 체크리스트 내용\n")
     public int postAddTitle(@RequestBody InsDto dto) {
         return service.insTravelInfo(dto);
+    }
+
+    @DeleteMapping("/delete/check/{idCheck}")
+    public int delCheckList(@PathVariable int idCheck) {
+        DelCheckListDto dto = new DelCheckListDto();
+        dto.setIdCheck(idCheck);
+        return service.delCheckList(dto);
+    }
+
+    @DeleteMapping("/delete/sub/{idSub}")
+    public int delSubTitle(@PathVariable int idSub) {
+        DelSubTitleDto dto = new DelSubTitleDto();
+        dto.setIdSub(idSub);
+        return service.delSubTitle(dto);
+    }
+
+    @PatchMapping("/delete/{idTitle}")
+    public int patchTravel(@PathVariable int idTitle) {
+        UpdTravelDto dto = new UpdTravelDto();
+        dto.setIdTitle(idTitle);
+        return service.updTravel(dto);
     }
 
 //    @PutMapping("/{idTitle}")
