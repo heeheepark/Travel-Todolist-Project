@@ -50,11 +50,12 @@ public class TodoService {
         try {
             mapper.insTitle(titleDto);
         } catch (Exception e) {
+            e.printStackTrace();
             return 1;
         }
 
         String subList = "";
-        List<InsCheckListVo> checkList = new ArrayList<>();
+        List<InsCheckListVo> checkList;
 
         for (int i = 0; i < dto.getSubList().size(); i++) {
             subList = dto.getSubList().get(i).getSubTitle();
@@ -62,18 +63,17 @@ public class TodoService {
             try {
                 mapper.insSubTitle(subList);
             } catch (Exception e) {
+                e.printStackTrace();
                 return 2;
             }
+
             try {
-                for (int j = 0; j < dto.getSubList().get(i).getCheckList().size(); j++) {
-                    checkList.add(dto.getSubList().get(i).getCheckList().get(j));
-                }
+                checkList = dto.getSubList().get(i).getCheckList();
                 mapper.insCheckList(checkList);
             } catch (Exception e) {
                 e.printStackTrace();
                 return 3;
             }
-            checkList.clear();
         }
         return 0;
     }
@@ -81,14 +81,14 @@ public class TodoService {
     public int delCheckList(DelCheckListDto dto) {
         return mapper.delCheckList(dto);
     }
-
     public int delSubTitle(DelSubTitleDto dto) {
         return mapper.delSubTitle(dto);
     }
-
     public int updTravel(UpdTravelDto dto) {
         return mapper.updTravel(dto);
     }
+
+
 
 
 //        public int updTitle (updTitleEntity entity){

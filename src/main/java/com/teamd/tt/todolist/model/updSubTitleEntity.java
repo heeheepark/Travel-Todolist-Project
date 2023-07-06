@@ -10,5 +10,4 @@ public class updSubTitleEntity {
     private String createdAt;
     private String updatedAt;
     private boolean finishYn;
-
 }
