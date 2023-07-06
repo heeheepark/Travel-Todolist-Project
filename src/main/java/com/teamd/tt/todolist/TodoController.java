@@ -48,18 +48,27 @@ public class TodoController {
 //    }
 
     @DeleteMapping("/delete/check/{idCheck}")
+    @Operation(summary = "체크리스트 삭제",
+            description =
+                    "<h3>idCheck : 체크리스트 pk값\n ")
     public int delCheckList(@PathVariable int idCheck) {
         DelCheckListDto dto = new DelCheckListDto();
         dto.setIdCheck(idCheck);
         return service.delCheckList(dto);
     }
     @DeleteMapping("/delete/sub/{idSub}")
+    @Operation(summary = "여행일정(+체크리스트) 삭제",
+            description =
+                    "<h3>idSub : 여행일정 pk값\n")
     public int delSubTitle(@PathVariable int idSub) {
         DelSubTitleDto dto = new DelSubTitleDto();
         dto.setIdSub(idSub);
         return service.delSubTitle(dto);
     }
     @PatchMapping("/delete/{idTitle}")
+    @Operation(summary = "여행지 삭제",
+            description =
+                    "<h3>idTitle : 여행지 pk값\n")
     public int patchTravel(@PathVariable int idTitle) {
         UpdTravelDto dto = new UpdTravelDto();
         dto.setIdTitle(idTitle);
