@@ -66,6 +66,10 @@ public class TodoService {
                 return 2;
             }
 
+            if (dto.getSubList().get(0).getCheckList().size() == 0) {
+                return 4;
+            }
+
             try {
                 checkList = dto.getSubList().get(i).getCheckList();
                 mapper.insCheckList(checkList);
@@ -77,6 +81,18 @@ public class TodoService {
         return 0;
     }
 
+//    public SelPickInfo selPickInfo(int idTitle) {
+//        SelPickInfo pickInfo = mapper.selPickTravelInfo(idTitle);
+//        for (int i = 0; i < ; i++) {
+//            
+//        }
+//        
+//        pickInfo.setSubList();
+//        
+//        
+//    }
+    
+
     public int delCheckList(DelCheckListDto dto) {
         return mapper.delCheckList(dto);
     }
@@ -87,7 +103,7 @@ public class TodoService {
         return mapper.updTravel(dto);
     }
 
-
+    
 
 
 //        public int updTitle (updTitleEntity entity){

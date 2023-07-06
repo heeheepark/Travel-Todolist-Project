@@ -36,10 +36,16 @@ public class TodoController {
                     "<h3>code 0 : 저장 성공\n" +
                     "<h3>code 1 : travel 테이블 정보저장 실패\n" +
                     "<h3>code 2 : sub_title 테이블 정보저장 실패\n" +
-                    "<h3>code 3 : check_list 테이블 정보저장 실패\n")
+                    "<h3>code 3 : check_list 테이블 정보저장 실패\n" +
+                    "<h3>code 4 : check_list가 없는 정보저장 성공\n")
     public int postTravelInfo(@RequestBody InsDto dto) {
         return service.insTravelInfo(dto);
     }
+
+//    @GetMapping("/{idTitle}")
+//    public SelPickInfo getPickInfo (@PathVariable int idTitle) {
+//        return service.selPickInfo(idTitle);
+//    }
 
     @DeleteMapping("/delete/check/{idCheck}")
     public int delCheckList(@PathVariable int idCheck) {

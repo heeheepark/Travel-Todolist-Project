@@ -39,7 +39,7 @@
         </foreach>
     </insert>
 
-    <select id="selTravelInfo">
+    <select id="selPickTravelInfo">
         SELECT a.id_title, b.region, c.region_detail, a.start_date, a.end_date, a.cal_color, a.travel_review
         FROM travel a
         INNER JOIN region b
@@ -49,6 +49,19 @@
         WHERE a.id_title = #{idTitle}
     </select>
 
+    <select id="selPickSubInfo">
+        SELECT id_sub, sub_title, finish_yn
+        FROM sub_title
+        WHERE id_title = #{idTitle}
+    </select>
+
+    <select id="selPickCheckInfo">
+        <foreach collection="list" item="item" index="index" separator="UNION">
+            SELECT id_check, check_list, finish_yn
+            FROM check_list
+            WHERE id_sub = #{item}
+        </foreach>
+    </select>
 
 
 
