@@ -31,13 +31,26 @@
     </insert>
 
     <insert id="insCheckList">
-        <foreach collection="list" item="item" index="index" separator=";">
             INSERT INTO check_list
             (id_sub, check_list)
             VALUES
-            ((SELECT id_sub FROM sub_title ORDER BY id_sub DESC LIMIT 1), #{item.checkList})
+        <foreach collection="list" item="item" index="index" separator=",">
+            ((SELECT id_sub FROM sub_title ORDER BY id_sub DESC LIMIT 1), #{item.checkTitle, jdbcType=VARCHAR})
         </foreach>
     </insert>
+
+    <select id="selTravelInfo">
+        SELECT
+        id_title
+    </select>
+    <select id="selSubInfo">
+
+    </select>
+    <select id="selCheckInfo">
+
+    </select>
+
+
 
 
     <update id="updTitle">
@@ -56,6 +69,7 @@
         SET id_title = #{idTitle},
             sub_title = #{subTitle},
             updated_at = CURRENT_TIMESTAMP()
+            finish_yn = 1 - finish_yn
         WHERE id_sub = #{idSub}
     </update>
 
@@ -72,6 +86,20 @@
         from region_detail
         where id_region_detail = #{idRegionDetail}
     </select>
+
+    <delete id="delCheckList">
+        DELETE from check_list
+        WHERE id_check= #{idCheck}
+    </delete>
+    <delete id="delSubTitle">
+        DELETE from sub_title
+        WHERE id_sub= #{idSub}
+    </delete>
+    <update id="updTravel">
+        UPDATE travel
+        SET del_yn = 1 - del_yn
+        WHERE id_title = #{idTitle}
+    </update>
 
 
 </mapper>

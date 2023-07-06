@@ -25,34 +25,60 @@ public class TodoController {
 
     @PostMapping
     @Operation(summary = "여행정보 추가",
-            description = "<h3>idRegion : 시,도 고유값\n" +
-                    "<h3>idRegionDetail : 군,구 고유값\n" +
+            description =
+                    "<h3>idRegionDetail : 군,구 고유값 (다섯자리 번호)\n" +
+                    "<h3>idRegion : 시,도 고유값 (두자리 번호)\n" +
                     "<h3>startDate : 시작 날짜 0000-00-00\n" +
                     "<h3>endDate : 마지막 날짜 0000-00-00\n" +
                     "<h3>calColor : 색깔코드\n " +
                     "<h3>subTitle : 여행일정 내용\n" +
-                    "<h3>checkList : 체크리스트 내용\n")
-    public int postAddTitle(@RequestBody InsDto dto) {
+                    "<h3>checkList : 체크리스트 내용\n" +
+                    "<h3>-----------------------\n" +
+                    "<h3>code 0 : 저장 성공\n" +
+                    "<h3>code 1 : travel 테이블 정보저장 실패\n" +
+                    "<h3>code 2 : sub_title 테이블 정보저장 실패\n" +
+                    "<h3>code 3 : check_list 테이블 정보저장 실패\n")
+    public int postTravelInfo(@RequestBody InsDto dto) {
         return service.insTravelInfo(dto);
     }
 
+    @DeleteMapping("/delete/check/{idCheck}")
+    public int delCheckList(@PathVariable int idCheck) {
+        DelCheckListDto dto = new DelCheckListDto();
+        dto.setIdCheck(idCheck);
+        return service.delCheckList(dto);
+    }
+    @DeleteMapping("/delete/sub/{idSub}")
+    public int delSubTitle(@PathVariable int idSub) {
+        DelSubTitleDto dto = new DelSubTitleDto();
+        dto.setIdSub(idSub);
+        return service.delSubTitle(dto);
+    }
+    @PatchMapping("/delete/{idTitle}")
+    public int patchTravel(@PathVariable int idTitle) {
+        UpdTravelDto dto = new UpdTravelDto();
+        dto.setIdTitle(idTitle);
+        return service.updTravel(dto);
+    }
+
 //    @PutMapping("/{idTitle}")
-//    @Operation(summary = "여행지 수정",
+//    @Operation(summary = "여행정보 수정",
 //            description = "<h3>idRegion : 시,도 고유값\n" +
 //                    "<h3>idRegionDetail : 군,구 고유값\n" +
 //                    "<h3>startDate : 시작 날짜 0000-00-00\n" +
 //                    "<h3>endDate : 마지막 날짜 0000-00-00\n" +
 //                    "<h3>calColor : 색깔코드\n" +
 //                    "<h3>idTitle : 여행지pk 값\n")
-//    public int putTitle(@PathVariable int idTitle, @RequestBody updTitleDto dto) {
-//        updTitleEntity entity = new updTitleEntity();
-//        entity.setIdTitle(idTitle);
-//        entity.setIdRegion(dto.getIdRegion());
-//        entity.setIdRegionDetail(dto.getIdRegionDetail());
-//        entity.setStartDate(dto.getStartDate());
-//        entity.setEndDate(dto.getEndDate());
-//        entity.setCalColor(dto.getCalColor());
-//        return service.updTitle(entity);
+//    public int putTravelInfo(@PathVariable int idTitle, @RequestBody UpdDto dto) {
+//        UpdIdDto idDto = new UpdIdDto();
+//        idDto.setIdTitle(idTitle);
+//        idDto.setIdRegionDetail(dto.getIdRegionDetail());
+//        idDto.setIdRegion(dto.getIdRegion());
+//        idDto.setStartDate(dto.getStartDate());
+//        idDto.setEndDate(dto.getEndDate());
+//        idDto.setCalColor(dto.getCalColor());
+//        idDto.setSubList(dto.getSubList());
+//        return service.(entity);
 //    }
 //    @PutMapping("/sub/{idSub}")
 //    @Operation(summary = "여행일정 수정")
