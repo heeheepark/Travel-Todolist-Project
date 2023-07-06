@@ -7,11 +7,13 @@
         SELECT id_title idTitle, title, start_date startDate, end_date endDate
         FROM travel
         WHERE start_date > CURRENT_TIMESTAMP()
+        AND del_yn = 0
         ORDER BY start_date
     </select>
     <select id="selSub">
         SELECT id_sub idSub, sub_title subTitle, finish_yn finishYn
         FROM sub_title
+        AND del_yn = 0
         WHERE id_title = #{idTitle}
     </select>
     <select id="selCheck">
