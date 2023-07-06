@@ -120,5 +120,4 @@
         WHERE id_title = #{idTitle}
     </update>
 
-
 </mapper>
