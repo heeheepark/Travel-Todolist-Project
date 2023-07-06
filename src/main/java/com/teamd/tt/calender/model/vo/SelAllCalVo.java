@@ -1,4 +1,4 @@
-package com.teamd.tt.calender.model;
+package com.teamd.tt.calender.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

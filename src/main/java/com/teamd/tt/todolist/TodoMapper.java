@@ -1,6 +1,5 @@
 package com.teamd.tt.todolist;
 
-import com.teamd.tt.todolist.model.*;
 import com.teamd.tt.todolist.model.dto.*;
 import com.teamd.tt.todolist.model.vo.InsCheckListVo;
 import com.teamd.tt.todolist.model.vo.SelRegionDetailVo;
@@ -19,8 +18,8 @@ public interface TodoMapper {
     String selIdRegion(int idRegion);
     String selIdRegionDetail(int idRegionDetail);
 
-    int updTitle(UpdTitleDto dto);
-    int updSubTitle(updSubTitleEntity entity);
+//    int updTitle(UpdTitleDto dto);
+//    int updSubTitle(updSubTitleEntity entity);
 
     int delCheckList(DelCheckListDto dto);
     int delSubTitle(DelSubTitleDto dto);

@@ -1,4 +1,4 @@
-package com.teamd.tt.calender.model;
+package com.teamd.tt.calender.model.dto;
 
 import lombok.Data;
 

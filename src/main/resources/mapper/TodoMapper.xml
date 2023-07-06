@@ -40,15 +40,15 @@
     </insert>
 
     <select id="selTravelInfo">
-        SELECT
-        id_title
+        SELECT a.id_title, b.region, c.region_detail, a.start_date, a.end_date, a.cal_color, a.travel_review
+        FROM travel a
+        INNER JOIN region b
+        ON a.id_region = b.id_region
+        INNER JOIN region_detail c
+        ON a.id_region_detail = c.id_region_detail
+        WHERE a.id_title = #{idTitle}
     </select>
-    <select id="selSubInfo">
 
-    </select>
-    <select id="selCheckInfo">
-
-    </select>
 
 
 
@@ -95,25 +95,6 @@
         DELETE from sub_title
         WHERE id_sub= #{idSub}
     </delete>
-    <update id="updTravel">
-        UPDATE travel
-        SET del_yn = 1 - del_yn
-        WHERE id_title = #{idTitle}
-    </update>
-
-
-    <delete id="delCheckList">
-        DELETE from check_list
-        WHERE id_check= #{idCheck}
-
-    </delete>
-
-    <delete id="delSubTitle">
-        DELETE from sub_title
-        WHERE id_sub= #{idSub}
-
-    </delete>
-
     <update id="updTravel">
         UPDATE travel
         SET del_yn = 1 - del_yn
