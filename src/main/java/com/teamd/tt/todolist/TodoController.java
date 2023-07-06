@@ -42,10 +42,10 @@ public class TodoController {
         return service.insTravelInfo(dto);
     }
 
-//    @GetMapping("/{idTitle}")
-//    public SelPickInfo getPickInfo (@PathVariable int idTitle) {
-//        return service.selPickInfo(idTitle);
-//    }
+    @GetMapping("/{idTitle}")
+    public SelPickInfo getPickInfo (@PathVariable int idTitle) {
+        return service.selPickInfo(idTitle);
+    }
 
     @DeleteMapping("/delete/check/{idCheck}")
     @Operation(summary = "체크리스트 삭제",
@@ -74,6 +74,7 @@ public class TodoController {
         dto.setIdTitle(idTitle);
         return service.updTravel(dto);
     }
+
 
 //    @PutMapping("/{idTitle}")
 //    @Operation(summary = "여행정보 수정",

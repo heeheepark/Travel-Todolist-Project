@@ -1,10 +1,7 @@
 package com.teamd.tt.todolist;
 
 import com.teamd.tt.todolist.model.dto.*;
-import com.teamd.tt.todolist.model.vo.InsCheckListVo;
-import com.teamd.tt.todolist.model.vo.SelRegionAllVo;
-import com.teamd.tt.todolist.model.vo.SelRegionDetailVo;
-import com.teamd.tt.todolist.model.vo.SelRegionVo;
+import com.teamd.tt.todolist.model.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -81,29 +78,27 @@ public class TodoService {
         return 0;
     }
 
-//    public SelPickInfo selPickInfo(int idTitle) {
-//        SelPickInfo pickInfo = mapper.selPickTravelInfo(idTitle);
-//        for (int i = 0; i < ; i++) {
-//            
-//        }
-//        
-//        pickInfo.setSubList();
-//        
-//        
-//    }
-    
+    public SelPickInfo selPickInfo(int idTitle) {
+        SelPickInfo pickInfo;
+        List<SelSubTitleListVo> list = mapper.selPickTravelInfoDetail(idTitle);
+
+        pickInfo = mapper.selPickTravelInfo(idTitle);
+        pickInfo.setSubList(list);
+        return pickInfo;
+    }
+
 
     public int delCheckList(DelCheckListDto dto) {
         return mapper.delCheckList(dto);
     }
+
     public int delSubTitle(DelSubTitleDto dto) {
         return mapper.delSubTitle(dto);
     }
+
     public int updTravel(UpdTravelDto dto) {
         return mapper.updTravel(dto);
     }
-
-    
 
 
 //        public int updTitle (updTitleEntity entity){

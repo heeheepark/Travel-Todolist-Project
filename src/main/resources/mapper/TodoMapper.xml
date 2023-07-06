@@ -48,23 +48,31 @@
         ON a.id_region_detail = c.id_region_detail
         WHERE a.id_title = #{idTitle}
     </select>
+    
+    <resultMap id="selSubTitleListVo" type="SelSubTitleListVo">
+        <id property="idSub" column="id_sub"/>
+        <id property="subTitle" column="sub_title"/>
+        <id property="finishYn" column="finish_yn"/>
+        <association property="checkList" column="{id_sub = id_sub}" select="selPickCheckInfo"/>
+    </resultMap>
 
-    <select id="selPickSubInfo">
-        SELECT id_sub, sub_title, finish_yn
+    <select id="selPickTravelInfoDetail" resultMap="selSubTitleListVo">
+        SELECT id_sub idSub, sub_title subTitle, finish_yn finishYn
         FROM sub_title
         WHERE id_title = #{idTitle}
     </select>
 
-    <select id="selPickCheckInfo">
-        <foreach collection="list" item="item" index="index" separator="UNION">
+    <select id="selPickCheckInfo" resultType="SelCheckListVo">
             SELECT id_check, check_list, finish_yn
             FROM check_list
-            WHERE id_sub = #{item}
-        </foreach>
+            WHERE id_sub = #{idSub}
     </select>
 
-
-
+    <select id="getSubIdList">
+        SELECT id_sub
+        FROM sub_title
+        WHERE id_title = #{idTitle}
+    </select>
 
     <update id="updTitle">
         UPDATE travel
