@@ -102,4 +102,23 @@
     </update>
 
 
+    <delete id="delCheckList">
+        DELETE from check_list
+        WHERE id_check= #{idCheck}
+
+    </delete>
+
+    <delete id="delSubTitle">
+        DELETE from sub_title
+        WHERE id_sub= #{idSub}
+
+    </delete>
+
+    <update id="updTravel">
+        UPDATE travel
+        SET del_yn = 1 - del_yn
+        WHERE id_title = #{idTitle}
+    </update>
+
+
 </mapper>
