@@ -47,7 +47,7 @@ public class TodoController {
         return service.selPickInfo(idTitle);
     }
 
-    @DeleteMapping("/delete/check/{idCheck}")
+    @DeleteMapping("/check/{idCheck}")
     @Operation(summary = "체크리스트 삭제",
             description =
                     "<h3>idCheck : 체크리스트 pk값\n ")
@@ -56,7 +56,8 @@ public class TodoController {
         dto.setIdCheck(idCheck);
         return service.delCheckList(dto);
     }
-    @DeleteMapping("/delete/sub/{idSub}")
+
+    @DeleteMapping("/sub/{idSub}")
     @Operation(summary = "여행일정(+체크리스트) 삭제",
             description =
                     "<h3>idSub : 여행일정 pk값\n")
@@ -65,7 +66,7 @@ public class TodoController {
         dto.setIdSub(idSub);
         return service.delSubTitle(dto);
     }
-    @PatchMapping("/delete/{idTitle}")
+    @PatchMapping("/{idTitle}")
     @Operation(summary = "여행지 삭제",
             description =
                     "<h3>idTitle : 여행지 pk값\n")

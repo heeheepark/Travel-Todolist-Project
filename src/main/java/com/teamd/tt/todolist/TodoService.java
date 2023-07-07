@@ -64,7 +64,7 @@ public class TodoService {
             }
 
             if (dto.getSubList().get(0).getCheckList().size() == 0) {
-                return 4;
+                continue;
             }
 
             try {
@@ -79,10 +79,19 @@ public class TodoService {
     }
 
     public SelPickInfo selPickInfo(int idTitle) {
-        SelPickInfo pickInfo;
-        List<SelSubTitleListVo> list = mapper.selPickTravelInfoDetail(idTitle);
+        SelPickInfo pickInfo = new SelPickInfo();
+        SelPickInfoDto dto1 = mapper.selPickTravelInfo(idTitle);
+        asdsadDto dto = new asdsadDto();
+        dto.setIdSub(idTitle);
+        List<SelSubTitleListVo> list = mapper.selPickTravelInfoDetail(dto);
 
-        pickInfo = mapper.selPickTravelInfo(idTitle);
+        pickInfo.setIdTitle(dto1.getIdTitle());
+        pickInfo.setRegion(dto1.getRegion());
+        pickInfo.setRegionDetail(dto1.getRegionDetail());
+        pickInfo.setStartDate(dto1.getStartDate());
+        pickInfo.setEndDate(dto1.getEndDate());
+        pickInfo.setCalColor(dto1.getCalColor());
+
         pickInfo.setSubList(list);
         return pickInfo;
     }

@@ -50,10 +50,10 @@
     </select>
     
     <resultMap id="selSubTitleListVo" type="SelSubTitleListVo">
-        <id property="idSub" column="id_sub"/>
-        <id property="subTitle" column="sub_title"/>
+        <id property="idSub" column="id_check"/>
+        <id property="subTitle" column="check_list"/>
         <id property="finishYn" column="finish_yn"/>
-        <association property="checkList" column="{id_sub = id_sub}" select="selPickCheckInfo"/>
+        <collection property="checkList" column="{idSub=idSub}" select="selPickCheckInfo"/>
     </resultMap>
 
     <select id="selPickTravelInfoDetail" resultMap="selSubTitleListVo">
@@ -63,7 +63,7 @@
     </select>
 
     <select id="selPickCheckInfo" resultType="SelCheckListVo">
-            SELECT id_check, check_list, finish_yn
+            SELECT id_check idCheck, check_list checkList, finish_yn finishYn
             FROM check_list
             WHERE id_sub = #{idSub}
     </select>

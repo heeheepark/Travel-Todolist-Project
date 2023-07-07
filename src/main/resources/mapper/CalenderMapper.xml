@@ -22,7 +22,6 @@
         INNER JOIN travel b
         ON a.id_title = b.id_title
         WHERE b.id_title = #{idTitle}
-        AND del_yn = 0
     </select>
     <select id="selCheck">
         SELECT a.id_check idCheck, a.check_list checkList, a.finish_Yn finishYn
@@ -32,6 +31,5 @@
         INNER JOIN travel c
         ON b.id_title = c.id_title
         WHERE b.id_sub = #{idSub}
-        AND del_yn = 0
     </select>
 </mapper>
