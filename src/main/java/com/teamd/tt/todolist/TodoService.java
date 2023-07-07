@@ -28,7 +28,7 @@ public class TodoService {
                 .build();
     }
 
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public int insTravelInfo(InsDto dto) {
         InsTitleDto titleDto = new InsTitleDto();
         titleDto.setIdRegionDetail(dto.getIdRegionDetail());
@@ -79,21 +79,27 @@ public class TodoService {
     }
 
     public SelPickInfo selPickInfo(int idTitle) {
-        SelPickInfo pickInfo = new SelPickInfo();
-        SelPickInfoDto dto1 = mapper.selPickTravelInfo(idTitle);
         asdsadDto dto = new asdsadDto();
-        dto.setIdSub(idTitle);
-        List<SelSubTitleListVo> list = mapper.selPickTravelInfoDetail(dto);
-
-        pickInfo.setIdTitle(dto1.getIdTitle());
-        pickInfo.setRegion(dto1.getRegion());
-        pickInfo.setRegionDetail(dto1.getRegionDetail());
-        pickInfo.setStartDate(dto1.getStartDate());
-        pickInfo.setEndDate(dto1.getEndDate());
-        pickInfo.setCalColor(dto1.getCalColor());
-
-        pickInfo.setSubList(list);
+        dto.setIdTitle(idTitle);
+        SelPickInfo pickInfo = mapper.selPickTravelInfo(dto);
         return pickInfo;
+
+
+//        SelPickInfo pickInfo = new SelPickInfo();
+//        SelPickInfoDto dto1 = mapper.selPickTravelInfo(idTitle);
+//        asdsadDto dto = new asdsadDto();
+//        dto.setIdTitle(idTitle);
+//
+//        pickInfo.setIdTitle(idTitle);
+//        pickInfo.setRegion(dto1.getRegion());
+//        pickInfo.setRegionDetail(dto1.getRegionDetail());
+//        pickInfo.setStartDate(dto1.getStartDate());
+//        pickInfo.setEndDate(dto1.getEndDate());
+//        pickInfo.setCalColor(dto1.getCalColor());
+//
+//        List<SelSubTitleListVo> list = mapper.selPickTravelInfoDetail(dto);
+//        pickInfo.setSubList(list);
+//        return pickInfo;
     }
 
 

@@ -10,4 +10,5 @@ public class SelPickInfoDto {
     private String startDate;
     private String endDate;
     private String calColor;
+    private String travelReview;
 }

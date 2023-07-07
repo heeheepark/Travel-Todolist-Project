@@ -14,5 +14,6 @@ public class SelPickInfo {
     private String startDate;
     private String endDate;
     private String calColor;
+    private String travelReview;
     private List<SelSubTitleListVo> subList;
 }

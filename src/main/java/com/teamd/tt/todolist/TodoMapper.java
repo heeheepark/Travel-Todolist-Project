@@ -16,8 +16,9 @@ public interface TodoMapper {
     String selIdRegion(int idRegion);
     String selIdRegionDetail(int idRegionDetail);
 
-    SelPickInfoDto selPickTravelInfo(int idTitle);
-    List<SelSubTitleListVo> selPickTravelInfoDetail(asdsadDto dto);
+    SelPickInfo selPickTravelInfo(asdsadDto dto);
+
+//    List<SelSubTitleListVo> selPickTravelInfoDetail(asdsadDto dto);
 
 //    int updTitle(UpdTitleDto dto);
 //    int updSubTitle(updSubTitleEntity entity);
