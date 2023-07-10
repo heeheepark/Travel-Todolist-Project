@@ -22,8 +22,8 @@ public class CalenderController {
 
     @GetMapping
     @Operation(summary = "캘린더 전체 일정 데이터",
-            description = "<h3>year : 년도 입력(시작날짜 연도로 구분중)\n" +
-                    "<h3>month : 달 입력(시작날짜 달로 구분중)\n")
+            description = "<h3>year : 년도 입력(startdate 연도로 구분중)\n" +
+                    "<h3>month : 달 입력(startdate 달로 구분중)\n")
     public List<SelAllCalVo> getAllSchedule (@RequestParam int year, @RequestParam int month) {
         SelAllCalScheduleDto dto = new SelAllCalScheduleDto();
         dto.setYear(year);
