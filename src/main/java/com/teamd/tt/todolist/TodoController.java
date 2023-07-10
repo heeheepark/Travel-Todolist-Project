@@ -37,11 +37,13 @@ public class TodoController {
                     "<h3>code 1 : travel 테이블 정보저장 실패\n" +
                     "<h3>code 2 : sub_title 테이블 정보저장 실패\n" +
                     "<h3>code 3 : check_list 테이블 정보저장 실패\n")
-    public int postTravelInfo(@RequestBody InsDto dto) {
+    public int postTravelInfo(@RequestBody InsDto dto) throws Exception {
         return service.insTravelInfo(dto);
     }
 
     @GetMapping("/{idTitle}")
+    @Operation(summary = "여행정보 조회",
+            description = "<h3> idTitle : 여행 pk값")
     public SelPickInfo getPickInfo (@PathVariable int idTitle) {
         return service.selPickInfo(idTitle);
     }
@@ -74,37 +76,10 @@ public class TodoController {
         dto.setIdTitle(idTitle);
         return service.updTravel(dto);
     }
-
-
-//    @PutMapping("/{idTitle}")
-//    @Operation(summary = "여행정보 수정",
-//            description = "<h3>idRegion : 시,도 고유값\n" +
-//                    "<h3>idRegionDetail : 군,구 고유값\n" +
-//                    "<h3>startDate : 시작 날짜 0000-00-00\n" +
-//                    "<h3>endDate : 마지막 날짜 0000-00-00\n" +
-//                    "<h3>calColor : 색깔코드\n" +
-//                    "<h3>idTitle : 여행지pk 값\n")
-//    public int putTravelInfo(@PathVariable int idTitle, @RequestBody UpdDto dto) {
-//        UpdIdDto idDto = new UpdIdDto();
-//        idDto.setIdTitle(idTitle);
-//        idDto.setIdRegionDetail(dto.getIdRegionDetail());
-//        idDto.setIdRegion(dto.getIdRegion());
-//        idDto.setStartDate(dto.getStartDate());
-//        idDto.setEndDate(dto.getEndDate());
-//        idDto.setCalColor(dto.getCalColor());
-//        idDto.setSubList(dto.getSubList());
-//        return service.(entity);
-//    }
-//    @PutMapping("/sub/{idSub}")
-//    @Operation(summary = "여행일정 수정")
-//    public int putSubTitle(@PathVariable int idSub, @RequestBody updSubTitleDto dto) {
-//        updSubTitleEntity entity = new updSubTitleEntity();
-//        entity.setIdSub(idSub);
-//        entity.setSubTitle(dto.getSubTitle());
-//        entity.setIdTitle(dto.getIdTitle());
-//        return service.updSubTitle(entity);
-//
-//    }
-
-
+    @PutMapping("/{idTitle}")
+    @Operation(summary = "여행정보 수정")
+    public int putPickInfo(@PathVariable int idTitle, @RequestBody ModifyPickInfo pickInfo) {
+        pickInfo.setIdTitle(idTitle);
+        return service.updPickInfo(pickInfo);
+    }
 }

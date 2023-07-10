@@ -8,20 +8,23 @@ import java.util.List;
 
 @Mapper
 public interface TodoMapper {
-    List<SelRegionVo> selRegion();
-    List<SelRegionDetailVo> selDetailRegion();
+
     int insTitle(InsTitleDto dto);
     int insSubTitle(String subTitle);
+    int insSubTitle2(InsSubTitleDto dto);
     int insCheckList(List<InsCheckListVo> list);
+    int insCheckList2(InsCheckListDto dto);
+
+    int updTitle(UpdDto2 dto);
+    int updSubList(UpdSubTitleDto dto);
+    int updCheckList(UpdCheckListDto dto);
+
     String selIdRegion(int idRegion);
     String selIdRegionDetail(int idRegionDetail);
-
+    List<SelRegionVo> selRegion();
+    List<SelRegionDetailVo> selDetailRegion();
     SelPickInfo selPickTravelInfo(asdsadDto dto);
-
-//    List<SelSubTitleListVo> selPickTravelInfoDetail(asdsadDto dto);
-
-//    int updTitle(UpdTitleDto dto);
-//    int updSubTitle(updSubTitleEntity entity);
+    int selLastSubId();
 
     int delCheckList(DelCheckListDto dto);
     int delSubTitle(DelSubTitleDto dto);

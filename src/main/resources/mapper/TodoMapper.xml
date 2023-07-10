@@ -30,6 +30,13 @@
         ((SELECT id_title FROM travel ORDER BY id_title DESC LIMIT 1), #{subTitle})
     </insert>
 
+    <insert id="insSubTitle2">
+        INSERT INTO sub_title
+        (id_title, sub_title, finish_yn)
+        VALUES
+        (#{idTitle}, #{subTitle}, #{finishYn})
+    </insert>
+
     <insert id="insCheckList">
             INSERT INTO check_list
             (id_sub, check_list)
@@ -39,27 +46,25 @@
         </foreach>
     </insert>
 
+    <insert id="insCheckList2">
+        INSERT INTO check_list
+        (id_sub, check_list, finish_yn)
+        VALUES
+        (#{idSub}, #{checkTitle}, #{finishYn})
+    </insert>
+
     <resultMap id="test" type="SelPickInfo">
         <id property="idTitle" column="idTitle"/>
-        <id property="region" column="region"/>
-        <id property="regionDetail" column="regionDetail"/>
-        <id property="startDate" column="startDate"/>
-        <id property="endDate" column="endDate"/>
-        <id property="calColor" column="calColor"/>
-        <id property="travelReview" column="travelReview"/>
-        <collection property="subList" column="idTitle" select="selPickTravelInfoDetail"/>
+        <collection property="subList"  column="{idTitle=idTitle}" select="selPickTravelInfoDetail"/>
     </resultMap>
 
-    <resultMap id="selSubTitleListVo" type="SelSubTitleListVo">
+    <resultMap id="test2" type="SelSubTitleListVo">
         <id property="idSub" column="idSub"/>
-        <id property="subTitle" column="subTitle"/>
-        <id property="finishYn" column="finishYn"/>
-        <collection property="checkList" column="idSub" select="selPickCheckInfo"/>
+        <collection property="checkList"  column="{idSub=idSub}" select="selPickCheckInfo"/>
     </resultMap>
 
-    <select id="selPickTravelInfo" resultType="SelPickInfo" resultMap="test">
-        SELECT a.id_title idTitle, b.region, c.region_detail regionDetail,
-        a.start_date startDate, a.end_date endDate, a.cal_color calColor, a.travel_review travelReview
+    <select id="selPickTravelInfo" resultMap="test">
+        SELECT a.id_title idTitle, a.id_region_detail idRegionDetail, a.id_region idRegion, a.start_date startDate, a.end_date endDate, a.cal_color calColor, a.travel_review travelReview
         FROM travel a
         INNER JOIN region b
         ON a.id_region = b.id_region
@@ -68,13 +73,13 @@
         WHERE a.id_title = #{idTitle}
     </select>
 
-    <select id="selPickTravelInfoDetail" resultType="SelSubTitleListVo" resultMap="selSubTitleListVo">
+    <select id="selPickTravelInfoDetail" resultType="SelSubTitleListVo" resultMap="test2" >
         SELECT id_sub idSub, sub_title subTitle, finish_yn finishYn
         FROM sub_title
         WHERE id_title = #{idTitle}
     </select>
 
-    <select id="selPickCheckInfo" resultType="SelCheckListVo">
+    <select id="selPickCheckInfo"  resultType="SelCheckListVo" >
             SELECT id_check idCheck, check_list checkTitle, finish_yn finishYn
             FROM check_list
             WHERE id_sub = #{idSub}
@@ -88,25 +93,36 @@
 
     <update id="updTitle">
         UPDATE travel
-        SET id_region = #{idRegion},
-            id_region_detail = #{idRegionDetail},
-            start_date = #{startDate},
-            end_date = #{endDate},
-            cal_color = #{calColor},
-            title = #{title}
+        SET
+        id_region_detail = #{idRegionDetail},
+        id_region = #{idRegion},
+        start_date = #{startDate},
+        end_date = #{endDate},
+        cal_color = #{calColor}
         WHERE id_title = #{idTitle}
     </update>
-
-    <update id="updSubTitle">
+    <update id="updSubList">
         UPDATE sub_title
-        SET id_title = #{idTitle},
-            sub_title = #{subTitle},
-            updated_at = CURRENT_TIMESTAMP()
-            finish_yn = 1 - finish_yn
+        SET
+        sub_title = #{subTitle},
+        finish_yn = #{finishYn}
         WHERE id_sub = #{idSub}
     </update>
+    <update id="updCheckList">
+        UPDATE check_list
+        SET
+        check_list = #{checkTitle},
+        finish_yn = #{finishYn},
+        finish_at = if(finish_yn = 1, CURRENT_TIMESTAMP(),NULL)
+        WHERE id_check = #{idCheck}
+    </update>
 
-
+    <select id="selLastSubId">
+        SELECT id_sub
+        FROM sub_title
+        ORDER BY id_sub DESC
+        LIMIT 1;
+    </select>
 
     <select id="selIdRegion">
         SELECT region

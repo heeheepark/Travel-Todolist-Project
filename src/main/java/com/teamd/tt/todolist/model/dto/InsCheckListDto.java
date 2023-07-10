@@ -3,8 +3,8 @@ package com.teamd.tt.todolist.model.dto;
 import lombok.Data;
 
 @Data
-public class UpdSubTitleDto {
+public class InsCheckListDto {
     private int idSub;
-    private String subTitle;
+    private String checkTitle;
     private boolean finishYn;
 }

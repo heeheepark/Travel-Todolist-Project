@@ -6,8 +6,8 @@
     <select id="selAllTitle">
         SELECT id_title idTitle, title, start_date startDate, end_date endDate
         FROM travel
-        WHERE (start_date >= CURRENT_TIMESTAMP
-        OR end_date >= CURRENT_TIMESTAMP)
+        WHERE (start_date >=  CURDATE()
+        OR end_date >=  CURDATE())
         AND del_yn = 0
         ORDER BY start_date
     </select>

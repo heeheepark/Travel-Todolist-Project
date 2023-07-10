@@ -28,8 +28,8 @@ public class TodoService {
                 .build();
     }
 
-    @Transactional(rollbackFor = {Exception.class})
-    public int insTravelInfo(InsDto dto) {
+    @Transactional(rollbackFor = Exception.class)
+    public int insTravelInfo(InsDto dto) throws Exception {
         InsTitleDto titleDto = new InsTitleDto();
         titleDto.setIdRegionDetail(dto.getIdRegionDetail());
         titleDto.setIdRegion(dto.getIdRegion());
@@ -46,8 +46,7 @@ public class TodoService {
         try {
             mapper.insTitle(titleDto);
         } catch (Exception e) {
-            e.printStackTrace();
-            return 1;
+            throw new Exception("오류 코드 : 1번");
         }
 
         String subList = "";
@@ -59,11 +58,10 @@ public class TodoService {
             try {
                 mapper.insSubTitle(subList);
             } catch (Exception e) {
-                e.printStackTrace();
-                return 2;
+                throw new Exception("오류 코드 : 2번");
             }
 
-            if (dto.getSubList().get(0).getCheckList().size() == 0) {
+            if (dto.getSubList().get(i).getCheckList().size() == 0) {
                 continue;
             }
 
@@ -71,11 +69,10 @@ public class TodoService {
                 checkList = dto.getSubList().get(i).getCheckList();
                 mapper.insCheckList(checkList);
             } catch (Exception e) {
-                e.printStackTrace();
-                return 3;
+                throw new Exception("오류 코드 : 3번");
             }
         }
-        return 0;
+        return 1;
     }
 
     public SelPickInfo selPickInfo(int idTitle) {
@@ -83,23 +80,75 @@ public class TodoService {
         dto.setIdTitle(idTitle);
         SelPickInfo pickInfo = mapper.selPickTravelInfo(dto);
         return pickInfo;
+    }
+@Transactional(rollbackFor = Exception.class)
+    public int updPickInfo(ModifyPickInfo pickInfo) {
+        UpdDto2 dto2 = new UpdDto2();
+        dto2.setIdTitle(pickInfo.getIdTitle());
+        dto2.setIdRegionDetail(pickInfo.getIdRegionDetail());
+        dto2.setIdRegion(pickInfo.getIdRegion());
+        dto2.setStartDate(pickInfo.getStartDate());
+        dto2.setEndDate(pickInfo.getEndDate());
+        dto2.setCalColor(pickInfo.getCalColor());
+        mapper.updTitle(dto2);
 
 
-//        SelPickInfo pickInfo = new SelPickInfo();
-//        SelPickInfoDto dto1 = mapper.selPickTravelInfo(idTitle);
-//        asdsadDto dto = new asdsadDto();
-//        dto.setIdTitle(idTitle);
-//
-//        pickInfo.setIdTitle(idTitle);
-//        pickInfo.setRegion(dto1.getRegion());
-//        pickInfo.setRegionDetail(dto1.getRegionDetail());
-//        pickInfo.setStartDate(dto1.getStartDate());
-//        pickInfo.setEndDate(dto1.getEndDate());
-//        pickInfo.setCalColor(dto1.getCalColor());
-//
-//        List<SelSubTitleListVo> list = mapper.selPickTravelInfoDetail(dto);
-//        pickInfo.setSubList(list);
-//        return pickInfo;
+        InsSubTitleDto insSubTitleDto = new InsSubTitleDto();
+        UpdSubTitleDto updSubTitleDto = new UpdSubTitleDto();
+        InsCheckListDto insCheckListDto = new InsCheckListDto();
+        UpdCheckListDto updCheckListDto = new UpdCheckListDto();
+
+        int subListSize = pickInfo.getSubList().size();
+
+        //subtitle, checklist테이블 업데이트
+        for (int i = 0; i < subListSize; i++) {
+            String getSubTitle = pickInfo.getSubList().get(i).getSubTitle();
+            int getSubId = pickInfo.getSubList().get(i).getIdSub();
+            boolean getSubFinishYn = pickInfo.getSubList().get(i).isFinishYn();
+            
+            if (getSubId == 0) {//새로생성된 서브리스트는 인서트
+                insSubTitleDto.setIdTitle(pickInfo.getIdTitle());
+                insSubTitleDto.setSubTitle(getSubTitle);
+                insSubTitleDto.setFinishYn(getSubFinishYn);
+                mapper.insSubTitle2(insSubTitleDto);
+            }
+            else if (getSubId >= 1) {//이미 있는 서브리스트는 업데이트
+             updSubTitleDto.setIdSub(getSubId);
+             updSubTitleDto.setSubTitle(getSubTitle);
+             updSubTitleDto.setFinishYn(getSubFinishYn);
+             mapper.updSubList(updSubTitleDto);
+            }
+
+            int checkListSize = pickInfo.getSubList().get(i).getCheckList().size();
+
+            for (int j = 0; j < checkListSize; j++) {
+
+                String getCheckTitle = pickInfo.getSubList().get(i).getCheckList().get(j).getCheckTitle();
+                int getCheckId = pickInfo.getSubList().get(i).getCheckList().get(j).getIdCheck();
+                boolean getCheckFinishYn = pickInfo.getSubList().get(i).getCheckList().get(j).isFinishYn();
+
+
+                if (getCheckId == 0 && getSubId >= 1) {//sub가 존재할때 새로생성된 체크리스트 인서트
+                    insCheckListDto.setIdSub(getSubId);
+                    insCheckListDto.setCheckTitle(getCheckTitle);
+                    insCheckListDto.setFinishYn(getCheckFinishYn);
+                    mapper.insCheckList2(insCheckListDto);
+                }
+                if (getCheckId == 0 && getSubId == 0) {//새로생성된 sub안의 새로생성된 체크리스트 인서트
+                    insCheckListDto.setIdSub(mapper.selLastSubId());
+                    insCheckListDto.setCheckTitle(getCheckTitle);
+                    insCheckListDto.setFinishYn(getCheckFinishYn);
+                    mapper.insCheckList2(insCheckListDto);
+                }
+                else if (getSubId >= 1) {//조건을 전부거침 = 존재하는 체크리스트, 이미 있는 체크리스트는 업데이트
+                    updCheckListDto.setIdCheck(getCheckId);
+                    updCheckListDto.setCheckTitle(getCheckTitle);
+                    updCheckListDto.setFinishYn(getCheckFinishYn);
+                    mapper.updCheckList(updCheckListDto);
+                }
+            }
+        }
+        return 1;
     }
 
 
@@ -114,16 +163,4 @@ public class TodoService {
     public int updTravel(UpdTravelDto dto) {
         return mapper.updTravel(dto);
     }
-
-
-//        public int updTitle (updTitleEntity entity){
-//            String idRegion = mapper.selIdRegion(entity.getIdRegion());
-//            String idRegionDetail = mapper.selIdRegionDetail(entity.getIdRegionDetail());
-//            entity.setTitle(idRegion + " " + idRegionDetail);
-//            return mapper.updTitle(entity);
-//        }
-//
-//        public int updSubTitle (updSubTitleEntity entity){
-//            return mapper.updSubTitle(entity);
-//        }
 }

@@ -1,13 +1,12 @@
 package com.teamd.tt.todolist.model.dto;
 
-import com.teamd.tt.todolist.model.vo.InsSubTitleListVo;
-import com.teamd.tt.todolist.model.vo.SelSubTitleListVo;
+import com.teamd.tt.todolist.model.vo.ModifyPickSubListVo;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class SelPickInfo {
+public class ModifyPickInfo {
     private int idTitle;
     private int idRegionDetail;
     private int idRegion;
@@ -15,5 +14,5 @@ public class SelPickInfo {
     private String endDate;
     private String calColor;
     private String travelReview;
-    private List<SelSubTitleListVo> subList;
+    private List<ModifyPickSubListVo> subList;
 }
