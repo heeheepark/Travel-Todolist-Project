@@ -23,7 +23,7 @@ public interface TodoMapper {
     String selIdRegionDetail(int idRegionDetail);
     List<SelRegionVo> selRegion();
     List<SelRegionDetailVo> selDetailRegion();
-    SelPickInfo selPickTravelInfo(asdsadDto dto);
+    SelPickInfo selPickTravelInfo(InfoDto dto);
     int selLastSubId();
 
     int delCheckList(DelCheckListDto dto);

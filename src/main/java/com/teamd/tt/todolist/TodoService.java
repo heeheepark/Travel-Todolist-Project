@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -76,10 +75,9 @@ public class TodoService {
     }
 
     public SelPickInfo selPickInfo(int idTitle) {
-        asdsadDto dto = new asdsadDto();
+        InfoDto dto = new InfoDto();
         dto.setIdTitle(idTitle);
-        SelPickInfo pickInfo = mapper.selPickTravelInfo(dto);
-        return pickInfo;
+        return mapper.selPickTravelInfo(dto);
     }
 @Transactional(rollbackFor = Exception.class)
     public int updPickInfo(ModifyPickInfo pickInfo) {
