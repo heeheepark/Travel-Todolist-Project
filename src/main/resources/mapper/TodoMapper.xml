@@ -98,7 +98,8 @@
         id_region = #{idRegion},
         start_date = #{startDate},
         end_date = #{endDate},
-        cal_color = #{calColor}
+        cal_color = #{calColor},
+        travel_review = #{travelReview}
         WHERE id_title = #{idTitle}
     </update>
     <update id="updSubList">

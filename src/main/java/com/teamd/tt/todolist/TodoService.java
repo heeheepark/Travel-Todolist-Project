@@ -88,6 +88,7 @@ public class TodoService {
         dto2.setStartDate(pickInfo.getStartDate());
         dto2.setEndDate(pickInfo.getEndDate());
         dto2.setCalColor(pickInfo.getCalColor());
+        dto2.setTravelReview(pickInfo.getTravelReview());
         mapper.updTitle(dto2);
 
 
