@@ -79,9 +79,11 @@ public class TodoService {
         dto.setIdTitle(idTitle);
         return mapper.selPickTravelInfo(dto);
     }
-@Transactional(rollbackFor = Exception.class)
+
+    @Transactional(rollbackFor = Exception.class)
     public int updPickInfo(ModifyPickInfo pickInfo) {
         UpdDto2 dto2 = new UpdDto2();
+
         dto2.setIdTitle(pickInfo.getIdTitle());
         dto2.setIdRegionDetail(pickInfo.getIdRegionDetail());
         dto2.setIdRegion(pickInfo.getIdRegion());
@@ -89,8 +91,12 @@ public class TodoService {
         dto2.setEndDate(pickInfo.getEndDate());
         dto2.setCalColor(pickInfo.getCalColor());
         dto2.setTravelReview(pickInfo.getTravelReview());
-        mapper.updTitle(dto2);
 
+        String idRegion = mapper.selIdRegion(pickInfo.getIdRegion());
+        String idRegionDetail = mapper.selIdRegionDetail(pickInfo.getIdRegionDetail());
+        dto2.setTitle(idRegion + " " + idRegionDetail);
+
+        mapper.updTitle(dto2);
 
         InsSubTitleDto insSubTitleDto = new InsSubTitleDto();
         UpdSubTitleDto updSubTitleDto = new UpdSubTitleDto();
@@ -104,18 +110,17 @@ public class TodoService {
             String getSubTitle = pickInfo.getSubList().get(i).getSubTitle();
             int getSubId = pickInfo.getSubList().get(i).getIdSub();
             boolean getSubFinishYn = pickInfo.getSubList().get(i).isFinishYn();
-            
+
             if (getSubId == 0) {//새로생성된 서브리스트는 인서트
                 insSubTitleDto.setIdTitle(pickInfo.getIdTitle());
                 insSubTitleDto.setSubTitle(getSubTitle);
                 insSubTitleDto.setFinishYn(getSubFinishYn);
                 mapper.insSubTitle2(insSubTitleDto);
-            }
-            else if (getSubId >= 1) {//이미 있는 서브리스트는 업데이트
-             updSubTitleDto.setIdSub(getSubId);
-             updSubTitleDto.setSubTitle(getSubTitle);
-             updSubTitleDto.setFinishYn(getSubFinishYn);
-             mapper.updSubList(updSubTitleDto);
+            } else if (getSubId >= 1) {//이미 있는 서브리스트는 업데이트
+                updSubTitleDto.setIdSub(getSubId);
+                updSubTitleDto.setSubTitle(getSubTitle);
+                updSubTitleDto.setFinishYn(getSubFinishYn);
+                mapper.updSubList(updSubTitleDto);
             }
 
             int checkListSize = pickInfo.getSubList().get(i).getCheckList().size();
@@ -138,8 +143,7 @@ public class TodoService {
                     insCheckListDto.setCheckTitle(getCheckTitle);
                     insCheckListDto.setFinishYn(getCheckFinishYn);
                     mapper.insCheckList2(insCheckListDto);
-                }
-                else if (getSubId >= 1) {//조건을 전부거침 = 존재하는 체크리스트, 이미 있는 체크리스트는 업데이트
+                } else if (getSubId >= 1) {//조건을 전부거침 = 존재하는 체크리스트, 이미 있는 체크리스트는 업데이트
                     updCheckListDto.setIdCheck(getCheckId);
                     updCheckListDto.setCheckTitle(getCheckTitle);
                     updCheckListDto.setFinishYn(getCheckFinishYn);

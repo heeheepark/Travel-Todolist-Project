@@ -6,6 +6,7 @@ public class UpdDto2 {
     private int idTitle;
     private int idRegionDetail;
     private int idRegion;
+    private String title;
     private String startDate;
     private String endDate;
     private String calColor;

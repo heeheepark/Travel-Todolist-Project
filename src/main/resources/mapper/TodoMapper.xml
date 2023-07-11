@@ -96,6 +96,7 @@
         SET
         id_region_detail = #{idRegionDetail},
         id_region = #{idRegion},
+        title = #{title},
         start_date = #{startDate},
         end_date = #{endDate},
         cal_color = #{calColor},
