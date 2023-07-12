@@ -50,8 +50,10 @@
             (
             SELECT COUNT(id_title)
             FROM travel
-            WHERE CURRENT_TIMESTAMP > end_date
-            AND del_yn = 0
+            WHERE
+<!--            CURRENT_TIMESTAMP > end_date-->
+<!--            AND -->
+            del_yn = 0
             AND id_region = #{item}
             ) AS count
             FROM region
@@ -62,8 +64,10 @@
     <select id="getCountAll">
         SELECT COUNT(id_title) AS countAll
         FROM travel
-        WHERE CURRENT_TIMESTAMP > end_date
-        AND del_yn = 0
+        WHERE
+<!--        CURRENT_TIMESTAMP > end_date-->
+<!--        AND -->
+        del_yn = 0
     </select>
 
     <select id="getRegionDetailIdList">
@@ -77,8 +81,10 @@
             (
             SELECT COUNT(id_title)
             FROM travel
-            WHERE CURRENT_TIMESTAMP > end_date
-            AND id_region_detail = #{item}
+            WHERE
+<!--            CURRENT_TIMESTAMP > end_date-->
+<!--            AND -->
+            id_region_detail = #{item}
             AND del_yn = 0
             ) AS count
             FROM region_detail
