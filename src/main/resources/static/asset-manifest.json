@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.819455f7.css",
+    "main.js": "/static/js/main.0ffcd4b6.js",
+    "static/media/logotitle.png": "/static/media/logotitle.3d8f930e4d3873b9952e.png",
+    "static/media/map.png": "/static/media/map.542e238f823d4e623df3.png",
+    "static/media/map2.png": "/static/media/map2.a657b4d28490b1b09e4e.png",
+    "static/media/calendar.png": "/static/media/calendar.71f6df721c14d822728a.png",
+    "static/media/logosmall.png": "/static/media/logosmall.674ad3eafbe10aa12ecf.png",
+    "static/media/background.jpeg": "/static/media/background.c857a85c5504f5bca399.jpeg",
+    "static/media/todo.png": "/static/media/todo.5d644730dfb970111d98.png",
+    "static/media/member4.png": "/static/media/member4.7336204a01a152ee8dc4.png",
+    "static/media/member1.png": "/static/media/member1.cf14ec786943a4a87ffc.png",
+    "static/media/member2.png": "/static/media/member2.b9f42c94446cc0f4ab95.png",
+    "static/media/member3.png": "/static/media/member3.eaab340bc570a749dab1.png",
+    "static/media/logoimg.png": "/static/media/logoimg.5a51a342cc7e2dd7f177.png",
+    "static/media/notion.png": "/static/media/notion.7aa264a898951e791ee3.png",
+    "index.html": "/index.html",
+    "main.819455f7.css.map": "/static/css/main.819455f7.css.map",
+    "main.0ffcd4b6.js.map": "/static/js/main.0ffcd4b6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.819455f7.css",
+    "static/js/main.0ffcd4b6.js"
+  ]
+}
